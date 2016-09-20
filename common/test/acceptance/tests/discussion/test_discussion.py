@@ -999,6 +999,9 @@ class InlineDiscussionTest(UniqueCourseTest, DiscussionResponsePaginationTestMix
         self.discussion_page = InlineDiscussionPage(self.browser, self.discussion_id)
         self.additional_discussion_page = InlineDiscussionPage(self.browser, self.additional_discussion_id)
 
+        #self.has_permission_mock = mock.Mock()
+        #self.block.has_permission = self.has_permission_mock
+
     def setup_thread_page(self, thread_id):
         self.discussion_page.expand_discussion()
         self.assertEqual(self.discussion_page.get_num_displayed_threads(), 1)
@@ -1039,10 +1042,9 @@ class InlineDiscussionTest(UniqueCourseTest, DiscussionResponsePaginationTestMix
 
     def test_add_a_post_is_present_if_can_create_thread_when_expanded(self):
         self.discussion_page.expand_discussion()
-        self.block.has_permission = lambda perm: True
+        # self.block.has_permission = lambda perm: True
         # Add a Post link is present
-        self.assertFalse(self.discussion_page._is_element_visible(".new-post-btn"))
-
+        self.assertTrue(self.discussion_page.q(css='.new-post-btn').present)
 
     def test_initial_render(self):
         self.assertFalse(self.discussion_page.is_discussion_expanded())

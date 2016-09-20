@@ -13,8 +13,9 @@
                 render: function() {
                     var discussionModuleView = new DiscussionModuleView({
                         el: this.$el,
+                        readOnly: this.el.dataset.readOnly,
                         context: 'standalone'
-                    });
+                    });console.log('readOnly in TeamDiscussionView ', this.el.dataset.readOnly);
                     discussionModuleView.render();
                     discussionModuleView.loadPage(this.$el);
                     return this;

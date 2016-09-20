@@ -74,6 +74,7 @@ NewPostView */
                 this.toggleDiscussionBtn = this.$('.discussion-show');
                 match = this.page_re.exec(window.location.href);
                 this.context = options.context || 'course';
+                this.readOnly = options.readOnly;
                 if (match) {
                     this.page = parseInt(match[1]);
                 } else {
@@ -146,7 +147,7 @@ NewPostView */
                     url: url,
                     type: 'GET',
                     dataType: 'json',
-                    success: function(response, textStatus) { console.log(response);
+                    success: function(response, textStatus) {
                         return self.renderDiscussion($elem, response, textStatus, discussionId);
                     },
                     error: error
@@ -169,7 +170,8 @@ NewPostView */
                 });
                 $discussion = _.template($('#inline-discussion-template').html())({
                     'threads': response.discussion_data,
-                    'can_create_thread': response.can_create_thread,
+                    can_create_thread: response.can_create_thread,
+                    read_only: this.readOnly,
                     'discussionId': discussionId
                 });
                 if (this.$('section.discussion').length) {

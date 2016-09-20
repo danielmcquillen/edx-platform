@@ -1,7 +1,8 @@
 <section class="discussion inline-discussion" data-discussion-id="<%= discussionId %>">
-    <% if (can_create_thread) { %>
-        <div class="add_post_btn_container"><button class="btn-link new-post-btn"><%- gettext("Add a Post") %></button></div>
-    <% } %>
+    <div class="add_post_btn_container <%if (read_only == 'true') {%>is-hidden<%} %>">
+        <button class="btn-link new-post-btn"><%- gettext("Add a Post") %></button>
+    </div>
+
     <article class="new-post-article"></article>
 
     <section class="threads">

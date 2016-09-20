@@ -40,7 +40,6 @@ class CourseGrade(object):
                     graded_total = subsection_grade.graded_total
                     if graded_total.possible > 0:
                         subsections_by_format[subsection_grade.format].append(graded_total)
-        self._log_event(log.info, u"subsections_by_format")
         return subsections_by_format
 
     @lazy
@@ -52,7 +51,6 @@ class CourseGrade(object):
         for chapter in self.chapter_grades:
             for subsection_grade in chapter['sections']:
                 locations_to_weighted_scores.update(subsection_grade.locations_to_weighted_scores)
-        self._log_event(log.info, u"locations_to_weighted_scores")
         return locations_to_weighted_scores
 
     @lazy
@@ -66,7 +64,6 @@ class CourseGrade(object):
             self.subsection_grade_totals_by_format,
             generate_random_scores=settings.GENERATE_PROFILE_SCORES
         )
-        self._log_event(log.info, u"grade_value")
         return grade_value
 
     @property
@@ -114,7 +111,7 @@ class CourseGrade(object):
         grade_summary['totaled_scores'] = self.subsection_grade_totals_by_format
         grade_summary['raw_scores'] = list(self.locations_to_weighted_scores.itervalues())
 
-        self._log_event(log.warning, u"grade_summary, percent: {0}, grade: {1}".format(self.percent, self.letter_grade))
+        self._log_event(log.info, u"grade_summary, percent: {0}, grade: {1}".format(self.percent, self.letter_grade))
         return grade_summary
 
     def compute_and_update(self, read_only=False):
@@ -123,15 +120,20 @@ class CourseGrade(object):
 
         If read_only is True, doesn't save any updates to the grades.
         """
-        self._log_event(log.warning, u"compute_and_update, read_only: {}".format(read_only))
         subsection_grade_factory = SubsectionGradeFactory(self.student, self.course, self.course_structure)
+        subsections_total = 0
+        blocks_total = 0
         for chapter_key in self.course_structure.get_children(self.course.location):
             chapter = self.course_structure[chapter_key]
             chapter_subsection_grades = []
             for subsection_key in self.course_structure.get_children(chapter_key):
-                chapter_subsection_grades.append(
-                    subsection_grade_factory.create(self.course_structure[subsection_key], read_only=True)
+                subsections_total = subsections_total + 1
+                subsection_grade = subsection_grade_factory.create(
+                    self.course_structure[subsection_key],
+                    read_only=True
                 )
+                chapter_subsection_grades.append(subsection_grade)
+                blocks_total = blocks_total + len(subsection_grade.locations_to_weighted_scores)
 
             self.chapter_grades.append({
                 'display_name': block_metadata_utils.display_name_with_default_escaped(chapter),
@@ -139,10 +141,21 @@ class CourseGrade(object):
                 'sections': chapter_subsection_grades
             })
 
+        subsections_read = len(subsection_grade_factory._unsaved_subsection_grades)  # pylint: disable=protected-access
+        subsections_created = subsections_total - subsections_read
         if not read_only:
             subsection_grade_factory.bulk_create_unsaved()
 
         self._signal_listeners_when_grade_computed()
+        self._log_event(
+            log.warning,
+            u"compute_and_update, read_only: {0}, {1}/{2} subsections read/created, {3} blocks accessed".format(
+                read_only,
+                subsections_read,
+                subsections_created,
+                blocks_total,
+            )
+        )
 
     def score_for_module(self, location):
         """

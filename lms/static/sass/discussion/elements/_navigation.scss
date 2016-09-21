@@ -67,6 +67,10 @@
     }
 }
 
+.forum-nav-browse-menu-item {
+  margin-bottom: 0;
+}
+
 .forum-nav-browse-title {
     @include text-align(left);
     display: block;

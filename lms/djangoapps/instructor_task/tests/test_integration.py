@@ -5,6 +5,7 @@ Runs tasks on answers to course problems to validate that code
 paths actually work.
 
 """
+from collections import namedtuple
 import ddt
 import json
 import logging
@@ -84,6 +85,7 @@ class TestRescoringTask(TestIntegrationTask):
         self.user2 = self.create_student('u2')
         self.user3 = self.create_student('u3')
         self.user4 = self.create_student('u4')
+        self.users = [self.user1, self.user2, self.user3, self.user4]
         self.logout()
 
         # set up test user for performing test operations
@@ -147,15 +149,27 @@ class TestRescoringTask(TestIntegrationTask):
                                                   InstructorTaskModuleTestCase.problem_location(problem_url_name),
                                                   student)
 
+    RescoringTestCase = namedtuple('RescoringTestCase', 'edit, new_expected_scores, new_expected_max')
+
     @ddt.data(
-        (dict(correct_answer=OPTION_2), 0, 2, 2),
-        (dict(num_inputs=2), 2, 4, 0),
-        (dict(num_inputs=4), 2, 8, 0),
-        (dict(num_responses=4), 2, 4, 0),
-        (dict(num_inputs=2, num_responses=4), 2, 8, 0),
+        RescoringTestCase(
+            edit=dict(correct_answer=OPTION_2), new_expected_scores=(0, 1, 1, 2), new_expected_max=2,
+        ),
+        RescoringTestCase(
+            edit=dict(num_inputs=2), new_expected_scores=(2, 1, 1, 0), new_expected_max=4,
+        ),
+        RescoringTestCase(
+            edit=dict(num_inputs=4), new_expected_scores=(2, 1, 1, 0), new_expected_max=8,
+        ),
+        RescoringTestCase(
+            edit=dict(num_responses=4), new_expected_scores=(2, 1, 1, 0), new_expected_max=4,
+        ),
+        RescoringTestCase(
+            edit=dict(num_inputs=2, num_responses=4), new_expected_scores=(2, 1, 1, 0), new_expected_max=8,
+        ),
     )
     @ddt.unpack
-    def test_rescoring_option_problem(self, problem_edit, new_expected_score, new_expected_max, new_expected_score_4):
+    def test_rescoring_option_problem(self, problem_edit, new_expected_scores, new_expected_max):
         """
         Run rescore scenario on option problem.
         Verify rescoring updates grade after content change.
@@ -176,31 +190,29 @@ class TestRescoringTask(TestIntegrationTask):
         self.submit_student_answer('u3', problem_url_name, [OPTION_2, OPTION_1])
         self.submit_student_answer('u4', problem_url_name, [OPTION_2, OPTION_2])
 
-        self.check_state(self.user1, descriptor, 2, 2)
-        self.check_state(self.user2, descriptor, 1, 2)
-        self.check_state(self.user3, descriptor, 1, 2)
-        self.check_state(self.user4, descriptor, 0, 2)
+        # verify each user's grade
+        expected_original_scores = (2, 1, 1, 0)
+        expected_original_max = 2
+        for i, user in enumerate(self.users):
+            self.check_state(user, descriptor, expected_original_scores[i], expected_original_max)
 
         # update the data in the problem definition so the answer changes.
         self.redefine_option_problem(problem_url_name, **problem_edit)
 
         # confirm that simply rendering the problem again does not change the grade
         self.render_problem('u1', problem_url_name)
-        self.check_state(self.user1, descriptor, 2, 2)
+        self.check_state(self.user1, descriptor, expected_original_scores[0], expected_original_max)
 
         # rescore the problem for only one student -- only that student's grade should change:
-        self.submit_rescore_one_student_answer('instructor', problem_url_name, User.objects.get(username='u1'))
-        self.check_state(self.user1, descriptor, new_expected_score, new_expected_max, 1)
-        self.check_state(self.user2, descriptor, 1, 2)
-        self.check_state(self.user3, descriptor, 1, 2)
-        self.check_state(self.user4, descriptor, 0, 2)
+        self.submit_rescore_one_student_answer('instructor', problem_url_name, self.user1)
+        self.check_state(self.user1, descriptor, new_expected_scores[0], new_expected_max)
+        for i, user in enumerate(self.users[1:], start=1):  # everyone other than user1
+            self.check_state(user, descriptor, expected_original_scores[i], expected_original_max)
 
         # rescore the problem for all students
         self.submit_rescore_all_student_answers('instructor', problem_url_name)
-        self.check_state(self.user1, descriptor, new_expected_score, new_expected_max)
-        self.check_state(self.user2, descriptor, 1, new_expected_max)
-        self.check_state(self.user3, descriptor, 1, new_expected_max)
-        self.check_state(self.user4, descriptor, new_expected_score_4, new_expected_max)
+        for i, user in enumerate(self.users):
+            self.check_state(user, descriptor, new_expected_scores[i], new_expected_max)
 
     def test_rescoring_failure(self):
         """Simulate a failure in rescoring a problem"""
@@ -326,8 +338,7 @@ class TestRescoringTask(TestIntegrationTask):
         location = InstructorTaskModuleTestCase.problem_location(problem_url_name)
         descriptor = self.module_store.get_item(location)
         # run with more than one user
-        users = [self.user1, self.user2, self.user3, self.user4]
-        for user in users:
+        for user in self.users:
             # first render the problem, so that a seed will be created for this user
             self.render_problem(user.username, problem_url_name)
             # submit a bogus answer, in order to get the problem to tell us its real answer
@@ -356,7 +367,7 @@ class TestRescoringTask(TestIntegrationTask):
         # rescore the problem for only one student -- only that student's grade should change
         # (and none of the attempts):
         self.submit_rescore_one_student_answer('instructor', problem_url_name, User.objects.get(username='u1'))
-        for user in users:
+        for user in self.users:
             expected_score = 0 if user.username == 'u1' else 1
             self.check_state(user, descriptor, expected_score, 1, expected_attempts=2)
 
@@ -364,7 +375,7 @@ class TestRescoringTask(TestIntegrationTask):
         self.submit_rescore_all_student_answers('instructor', problem_url_name)
 
         # all grades should change to being wrong (with no change in attempts)
-        for user in users:
+        for user in self.users:
             self.check_state(user, descriptor, 0, 1, expected_attempts=2)
 
 

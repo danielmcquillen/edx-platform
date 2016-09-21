@@ -358,6 +358,8 @@ class TestCourseGrader(TestSubmittingProblems):
         """
         Set up a simple course for testing weighted grading functionality.
         """
+        # pylint: disable=attribute-defined-outside-init
+
         self.set_weighted_policy(hw_weight, final_weight)
 
         # set up a structure of 1 homework and 1 final

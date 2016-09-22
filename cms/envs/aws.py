@@ -303,7 +303,7 @@ if AWS_SECRET_ACCESS_KEY == "":
     AWS_SECRET_ACCESS_KEY = None
 
 # iBio : ARN For Lambda-based event tracker
-AWS_EVENT_TRACKER_ARN = AUTH_TOKENS.get("AWS_EVENT_TRACKER_ARN")
+AWS_EVENT_TRACKER_ARN = ENV_TOKENS.get("AWS_EVENT_TRACKER_ARN")
 
 
 # Disabling querystring auth instructs Boto to exclude the querystring parameters (e.g. signature, access key) it

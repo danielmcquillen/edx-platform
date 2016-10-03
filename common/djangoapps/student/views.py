@@ -1262,16 +1262,18 @@ def login_user(request, error=""):  # pylint: disable=too-many-statements,unused
 
     # Track the user's sign in
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
-        tracking_context = tracker.get_tracker().resolve_context()
 
         # Track locally.
+        track_context = {
+            'user_id': user.id
+        }
         track_data = {
-            'user_id': user.id,
             'email': email,
             'username': username,
             'fullname': user.profile.name
         }
-        tracker.emit("edx.bi.user.account.authenticated", data=track_data)
+        with tracker.get_tracker().context("edx.bi.user.account.authenticated", track_context):
+            tracker.emit("edx.bi.user.account.authenticated", data=track_data)
 
         # Track via specific segment calls
         analytics.identify(
@@ -1745,7 +1747,11 @@ def create_account_with_params(request, params):
             })
 
         # Track locally
-        tracker.emit("edx.bi.user.account.registered", data=identity_args)
+        track_context = {
+            'user_id': user.id
+        }
+        with tracker.get_tracker().context("edx.bi.user.account.registered", track_context):
+            tracker.emit("edx.bi.user.account.registered", data=identity_args[1])
 
         # Track via segment.com
         analytics.identify(*identity_args)

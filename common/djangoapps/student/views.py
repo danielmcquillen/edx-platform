@@ -1263,6 +1263,17 @@ def login_user(request, error=""):  # pylint: disable=too-many-statements,unused
     # Track the user's sign in
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
         tracking_context = tracker.get_tracker().resolve_context()
+
+        # Track locally.
+        track_data = {
+            'user_id': user.id,
+            'email': email,
+            'username': username,
+            'fullname': user.profile.name
+        }
+        tracker.emit("edx.bi.user.account.authenticated", data=track_data)
+
+        # Track via specific segment calls
         analytics.identify(
             user.id,
             {
@@ -1707,11 +1718,14 @@ def create_account_with_params(request, params):
     # Track the user's registration
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
         tracking_context = tracker.get_tracker().resolve_context()
+
+
         identity_args = [
             user.id,  # pylint: disable=no-member
             {
                 'email': user.email,
                 'username': user.username,
+                'fullname': profile.fullname,
                 'name': profile.name,
                 # Mailchimp requires the age & yearOfBirth to be integers, we send a sane integer default if falsey.
                 'age': profile.age or -1,
@@ -1730,6 +1744,10 @@ def create_account_with_params(request, params):
                 }
             })
 
+        # Track locally
+        tracker.emit("edx.bi.user.account.registered", data=identity_args)
+
+        # Track via segment.com
         analytics.identify(*identity_args)
 
         analytics.track(

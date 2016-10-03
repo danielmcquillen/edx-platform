@@ -645,13 +645,13 @@ EVENT_TRACKING_BACKENDS = {
         'ENGINE': 'eventtracking.backends.routing.RoutingBackend',
         'OPTIONS': {
             'backends': {
-                'aws_lambda': {'ENGINE': 'eventtracking.backends.aws_lambda.AwsLambdaBackend'}
+                'awslambda': {'ENGINE': 'eventtracking.backends.awslambda.AwsLambdaBackend'}
             },
             'processors': [
                 {
                     'ENGINE': 'eventtracking.processors.whitelist.NameWhitelistProcessor',
                     'OPTIONS': {
-                        'whitelist': []
+                        'whitelist': ['edx.bi.user.account.registered', 'edx.bi.user.account.authenticated', 'edx.course.enrollment.activated']
                     }
                 }
             ]

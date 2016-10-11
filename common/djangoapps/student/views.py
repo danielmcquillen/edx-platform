@@ -1264,14 +1264,13 @@ def login_user(request, error=""):  # pylint: disable=too-many-statements,unused
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
 
         # Track locally.
+        # Send email for event-consuming services that use email as primary key
         track_context = {
-            'user_id': user.id
+            'user_id': user.id,
+            'email': email
         }
-        track_data = {
-            'email': email,
-            'username': username,
-            'fullname': user.profile.name
-        }
+        # No data to send at the moment about this particular event.
+        track_data = {}
         with tracker.get_tracker().context("edx.bi.user.account.authenticated", track_context):
             tracker.emit("edx.bi.user.account.authenticated", data=track_data)
 

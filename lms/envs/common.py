@@ -651,7 +651,7 @@ EVENT_TRACKING_BACKENDS = {
                 {
                     'ENGINE': 'eventtracking.processors.whitelist.NameWhitelistProcessor',
                     'OPTIONS': {
-                        'whitelist': ['edx.bi.user.account.registered', 'edx.bi.user.account.authenticated', 'edx.course.enrollment.activated']
+                        'whitelist': ['edx.bi.user.account.registered', 'edx.bi.user.account.authenticated', 'edx.course.enrollment.activated', 'edx.course.enrollment.deactivated', 'edx.certificate.created']
                     }
                 }
             ]

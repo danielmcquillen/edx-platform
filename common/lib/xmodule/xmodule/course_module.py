@@ -708,6 +708,14 @@ class CourseFields(object):
         scope=Scope.settings
     )
 
+    myjournal_configuration = Dict(
+        display_name=_("MyJournal Configuration"),
+        help=_(
+            'Add a title for the MyJournal and a short description of its overall purpose.'
+        ),
+        scope=Scope.settings,
+    )
+
     teams_configuration = Dict(
         display_name=_("Teams Configuration"),
         # Translators: please don't translate "id".
@@ -1325,6 +1333,17 @@ class CourseDescriptor(CourseFields, SequenceDescriptor, LicenseMixin):
         The optional padding_char parameter allows you to override the "=" character used for padding.
         """
         return course_metadata_utils.clean_course_key(self.location.course_key, padding_char)
+
+    @property
+    def myjournal_enabled(self):
+        """
+        Returns whether or not MyJournal has been enabled for this course.
+
+
+        """
+        # TODO iBio: Figure out if and how this should be set.
+
+        return True
 
     @property
     def teams_enabled(self):

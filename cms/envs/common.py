@@ -190,6 +190,9 @@ FEATURES = {
     # Certificates Web/HTML Views
     'CERTIFICATES_HTML_VIEW': False,
 
+    # MyJournal feature
+    'ENABLE_MYJOURNAL': True,
+
     # Teams feature
     'ENABLE_TEAMS': True,
 
@@ -1006,13 +1009,13 @@ EVENT_TRACKING_BACKENDS = {
         'ENGINE': 'eventtracking.backends.routing.RoutingBackend',
         'OPTIONS': {
             'backends': {
-                'aws_lambda': {'ENGINE': 'eventtracking.backends.aws_lambda.AwsLambdaBackend'}
+                'awslambda': {'ENGINE': 'eventtracking.backends.awslambda.AwsLambdaBackend'}
             },
             'processors': [
                 {
                     'ENGINE': 'eventtracking.processors.whitelist.NameWhitelistProcessor',
                     'OPTIONS': {
-                        'whitelist': []
+                        'whitelist': ['edx.bi.user.account.registered', 'edx.bi.user.account.authenticated', 'edx.course.enrollment.activated', 'edx.course.enrollment.deactivated', 'edx.certificate.created']
                     }
                 }
             ]

@@ -83,6 +83,9 @@ class CourseMetadata(object):
                 not getattr(settings, 'SOCIAL_SHARING_SETTINGS', {}).get("CUSTOM_COURSE_URLS")):
             filtered_list.append('social_sharing_url')
 
+        if not settings.FEATURES.get('ENABLE_MYJOURNAL'):
+            filtered_list.append('myjournal_configuration')
+
         # Do not show teams configuration if feature is disabled.
         if not settings.FEATURES.get('ENABLE_TEAMS'):
             filtered_list.append('teams_configuration')

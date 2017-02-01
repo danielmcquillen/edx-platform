@@ -683,6 +683,20 @@ urlpatterns += (
     ),
 )
 
+
+if settings.FEATURES["ENABLE_MYJOURNAL"]:
+    # Teams endpoints
+    urlpatterns += (
+        url(
+            r'^courses/{}/myjournal'.format(
+                settings.COURSE_ID_PATTERN,
+            ),
+            include('lms.djangoapps.myjournal.urls'),
+            name='myjournal_endpoints',
+        ),
+    )
+
+
 if settings.FEATURES["ENABLE_TEAMS"]:
     # Teams endpoints
     urlpatterns += (

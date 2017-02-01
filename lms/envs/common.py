@@ -327,6 +327,9 @@ FEATURES = {
     # Teams feature
     'ENABLE_TEAMS': True,
 
+    # MyJournal feature
+    'ENABLE_MYJOURNAL': True,
+
     # Show video bumper in LMS
     'ENABLE_VIDEO_BUMPER': False,
 
@@ -2070,6 +2073,9 @@ INSTALLED_APPS = (
 
     # Course teams
     'lms.djangoapps.teams',
+
+    # MyJournal
+    'lms.djangoapps.myjournal',
 
     'xblock_django',
 

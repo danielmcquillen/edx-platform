@@ -1,0 +1,174 @@
+.view-myjournal {
+
+  // resets for existing styles
+  div.course-wrapper section.course-content {
+    padding: 0;
+
+    p {
+      margin-bottom: ($baseline/4);
+    }
+  }
+
+  p, span {
+    color: inherit;
+    font-weight: inherit;
+  }
+
+  .icon {
+    font-family: "FontAwesome";
+    color: inherit;
+  }
+
+  // layout
+  .page-header {
+    @include clearfix();
+    border-bottom: 1px solid $gray-l3;
+    padding: $baseline $baseline ($baseline/2) $baseline;
+
+    .page-title {
+      @extend %t-title4;
+      margin-bottom: ($baseline/4);
+      text-transform: none;
+      color: $black;
+    }
+
+    .page-description {
+      @extend %t-copy-sub1;
+      margin-bottom: ($baseline/4);
+      color: $gray;
+    }
+  }
+
+  .page-header.has-secondary {
+
+    .page-header-main {
+      display: inline-block;
+      width: flex-grid(8,12);
+    }
+
+    .page-header-secondary {
+      @include text-align(right);
+      display: inline-block;
+      width: flex-grid(4,12);
+      vertical-align: text-bottom;
+    }
+  }
+
+  // ui bits
+  .breadcrumbs {
+    @extend %t-copy-sub1;
+
+    .nav-item {
+      @include margin-right($baseline/2);
+      display: inline-block;
+    }
+
+    .icon {
+      @include margin-right($baseline/4);
+      display: inline-block;
+      color: $gray-l2;
+
+      @include rtl {
+        @include transform(rotateY(180deg));
+      }
+    }
+  }
+
+  .page-header-search {
+
+    .wrapper-search-input {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle;
+    }
+
+    .search-label {
+      @extend %text-sr;
+    }
+
+    .search-field {
+      transition: all $tmg-f2 ease-in-out;
+      border: 1px solid $gray-l4;
+      border-radius: 3px;
+      padding: ($baseline/4) ($baseline/2);
+      font-family: inherit;
+      color: $gray;
+    }
+
+    .action-search {
+      @extend %button-reset;
+      background-color: $gray-l3;
+      padding: ($baseline/5) ($baseline/2);
+      text-shadow: none;
+      vertical-align: middle;
+
+      .icon {
+        color: $white;
+      }
+
+      // STATE: hover and focus
+      &:hover,
+      &:focus {
+        background-color: $blue;
+      }
+    }
+
+    .action-clear {
+      @include right(0);
+      @include margin(0, ($baseline/4), 0, 0);
+      @extend %button-reset;
+      position: absolute;
+      top: 0;
+      padding: ($baseline/4);
+      color: $gray-l3;
+
+      // STATE: hover and focus
+      &:hover,
+      &:focus {
+        color: $black;
+      }
+    }
+  }
+
+  // main content bits
+  .page-content {
+    padding: $baseline;
+  }
+
+  .page-content-nav {
+    @extend %page-content-nav;
+  }
+
+  .intro {
+    @extend %t-weight4;
+  }
+
+  .listing-tools {
+    margin: ($baseline/10) $baseline;
+  }
+
+}
+
+.myjournal-content {
+
+  .myjournal-main {
+
+
+  }
+}
+
+// vertical line between required and optional fields
+.vertical-line:after {
+  height: 100%;
+  border-left: 2px solid $gray-l4;
+  content: "";
+  position: absolute;
+}
+
+.form-instructions {
+  margin: ($baseline/2) 0 $baseline 0;
+}
+
+.create-team.form-actions {
+  margin-top: $baseline;
+}

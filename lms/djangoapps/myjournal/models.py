@@ -7,12 +7,13 @@ from uuid import uuid4
 from util.model_utils import slugify
 
 # States that a MyJournal Entry can be in.
-MYJOURAL_ENTRY_PRIVATE = 0
-MYJOURAL_ENTRY_PUBLIC = 1
+MYJOURNAL_ENTRY_PRIVATE = 0
+MYJOURNAL_ENTRY_PUBLIC = 1
 
 # States that a Entry Comment can be in
-COMMENT_FLAG_OK=0
-COMMENT_FLAG_INAPPROPRIATE=1
+COMMENT_FLAG_OK = 0
+COMMENT_FLAG_INAPPROPRIATE = 1
+
 
 class CourseMyJournal(models.Model):
     """
@@ -63,8 +64,8 @@ class Task(models.Model):
     This task appears in their MyJournal page as a blank entry
     with some instructions about what they should write.
     """
-    myjournal = models.ForeignKey(CourseMyJournal, db_index=True)
-    sequence = models.IntegerField('Where this entry is positioning in MyJournal list of entries for course.')
+    myjournal = models.ForeignKey(CourseMyJournal, related_name="tasks", db_index=True)
+    sequence = models.IntegerField('Where this entry is positioned in MyJournal list of entries for course.')
     title = models.CharField('Title for entry', max_length=255)
     description = models.TextField('Instructor description of entry task')
 
@@ -72,31 +73,35 @@ class Task(models.Model):
         app_label = "myjournal"
         ordering = ['sequence', ]
 
+    def __unicode__(self):
+        return "%d: %s" % (self.sequence, self.title)
+
 
 class Entry(models.Model):
     """
     Entry model class providing the fields and methods required for publishing
     a student's submissions for an entry in a MyJournal course instance,
     over time and with the ability to modifying the entry's visibility.
+
+    A foreign key to myjournal is included, rather than relying on relation through Task.
+    This allows a quicker lookup of entries by course.
     """
 
-    STATUS_CHOICES = ((MYJOURAL_ENTRY_PRIVATE, 'private'),
-                      (MYJOURAL_ENTRY_PUBLIC, 'public'))
-    task = models.ForeignKey(Task, db_index=True)
-    user = models.ForeignKey(User, db_index=True)
-    title = models.CharField(max_length=255)
-    text = models.TextField(blank=True)
-    private = models.BooleanField(default=True)
-    slug = models.SlugField(max_length=255, help_text="Used to build the entry's URL.")
-    status = models.IntegerField(db_index=True, choices=STATUS_CHOICES, default=MYJOURAL_ENTRY_PRIVATE)
+    myjournal = models.ForeignKey(CourseMyJournal, db_index=True, related_name='entries', on_delete=models.CASCADE)
+    task = models.OneToOneField(Task, related_name="entry",  on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, db_index=True)
+    text = models.TextField(blank=True, max_length=20000)
+    excerpt = models.TextField(blank=True, editable=False)
+    is_private = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
-    updated = models.DateTimeField(auto_now_add=True, auto_now=True, db_index=True)
+    updated = models.DateTimeField(auto_now=True, db_index=True)
 
     class Meta(object):
         app_label = "myjournal"
+        ordering = ['updated', ]
 
     @classmethod
-    def create(cls, task, user):
+    def create(cls, myjournal, task, user):
         """Create a blank Entry object for a MyJournal task.
 
         Args:
@@ -106,6 +111,7 @@ class Entry(models.Model):
         """
 
         entry = cls(
+            myjournal=myjournal,
             task=task,
             user=user,
             title="",
@@ -114,22 +120,31 @@ class Entry(models.Model):
 
         return entry
 
+    def save(self, *args, **kwargs):
+        """
+            Create an excerpt from entry text before finishing save.
+        """
+        self.excerpt = (self.text[:75] + '...') if len(self.text) > 75 else self.text
+        super(Entry, self).save(*args, **kwargs)  # Call the "real" save() method.
+
 
 class Comment(models.Model):
     """
-    A comment on a student's MyJounal Entry.
+    A comment on a specific MyJournal Entry.
     Can be made on an Entry by the author or another student.
     """
     FLAG_CHOICES = ((COMMENT_FLAG_OK, 'OK'),
                       (COMMENT_FLAG_INAPPROPRIATE, 'Flagged as inappropriate'))
-    entry = models.ForeignKey(Entry, db_index=True)
-    user = models.ForeignKey(User, db_index=True)
-    text = models.TextField(blank=True)
+    entry = models.ForeignKey(Entry, db_index=True, related_name="comments", on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, db_index=True)
+    text = models.TextField(blank=True, max_length=5000)
     flag = models.IntegerField(db_index=True, choices=FLAG_CHOICES, default=COMMENT_FLAG_OK)
-    #Hide function allows admin to hide comment if truly inappropriate
-    hide = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True, null=True, db_index=True)
-    updated = models.DateTimeField(auto_now_add=True, auto_now=True, db_index=True)
+    updated = models.DateTimeField(auto_now=True, db_index=True)
+
+    # Hide property allows admin to hide comment if truly inappropriate
+    hide = models.BooleanField(default=False)
 
     class Meta(object):
         app_label = "myjournal"
+        ordering = ['updated', ]

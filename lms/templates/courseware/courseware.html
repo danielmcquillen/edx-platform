@@ -150,6 +150,21 @@ ${HTML(fragment.foot_html())}
     </div>
 % endif
     <section class="course-content" id="course-content">
+      
+        <!-- DMcQ: Temp override styles to get what we want -->
+      <style>
+        
+        .path {
+          display: none;
+        }
+        
+        .bookmark-button-wrapper {
+          float: right;
+        }
+        
+      </style>
+      
+      
         <main id="main" aria-label="Content" tabindex="-1">
         % if getattr(course, 'entrance_exam_enabled') and \
            getattr(course, 'entrance_exam_minimum_score_pct') and \

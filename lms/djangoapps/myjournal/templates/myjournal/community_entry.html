@@ -19,18 +19,7 @@ from openedx.core.djangolib.js_utils import (
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 <script>
     
-    function onStartEditingEntry(){
-        $("#btnEdit").hide();
-        $("#mjEntryReadOnly").hide();
-        $("#mjEntryEdit").show();
-        tinymce.init({ selector:'textarea' });
-    };
-    
-    function onEntryCancel(){
-        window.location.replace('${entry_detail_url}');
-    }
-    
-    function submit_entry(){
+    function submit_comment(){
         
         // TODO Make sure form is valid
         var isValid = true;
@@ -38,24 +27,22 @@ from openedx.core.djangolib.js_utils import (
             return false;
         }
         
-        var full_text = tinymce.activeEditor.getContent();
-        var the_excerpt = tinymce.activeEditor.getContent({format:'text'}).slice(0,70) + "...";
+        var commentText = txtComment.value;
         
         // Send request to DRF
         $.ajax({
             type : "POST",
-            url : "${entry_detail_url}", // the endpoint
+            url : "${community_entry_comment_url}", // the endpoint
             contentType: "application/json; charset=utf-8", //make sure DRF recognizes this as json request
             data : JSON.stringify({
-                "text" : full_text,
-                "excerpt": the_excerpt,
+                "text" : commentText,
                 "csrfmiddlewaretoken" : "${ csrf_token }"
             }),
             dataType:"json",
             crossDomain:false,
             // handle a successful response
             success : function(json) {
-                window.location.replace('${entry_detail_url}');
+                window.location.replace('${community_entry_detail_url}');
             },
     
             // handle a non-successful response
@@ -71,9 +58,9 @@ from openedx.core.djangolib.js_utils import (
     
     
     $(document).ready(function() {
-        $('#entry-form').submit(function(event) {
+        $('#comment-form').submit(function(event) {
             event.preventDefault();
-            submit_entry();
+            submit_comment();
         });
     });
     
@@ -174,49 +161,47 @@ from openedx.core.djangolib.js_utils import (
                     </div>
                     
                     <div class="mjEntry">
-                        
                         <div id="mjEntryReadOnly">
                             ${entry['text']}
                         </div>
-                        
-                        <div id="mjEntryEdit" style="display:none">
-                            <form id="entry-form">
-                                <div style="width:100%">
-                                    <textarea id="entryTextArea"
-                                              name="text"
-                                              style="width:100%; min-height:500px;">
-                                        ${ entry['text'] }
-                                    </textarea>
-                                    <div style="padding-top:20px;">
-                                        <span>
-                                            <input type="button" value="Cancel" onclick="onEntryCancel()" style="min-width:90px;">
-                                            &nbsp;&nbsp;
-                                            <input type="submit" style="min-width:90px;">
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                       
-                                                
                     </div>
-                    
-                    
                     
                     <div class="mjCommentsHeader" >
                         <div style="width:100px;">Comments</div>
                     </div>
                     
                     <div class="mjComments">
-                        % for comment in entry['comments']:
                         
+                        % for comment in entry['comments']:
                         <div class="mjComment">
                             <p>${comment['text']}</p>
-                            <p>owner : ${comment['owner']}</p>
-                        </div>
-                        
+                            <p>By: ${comment['owner']['username']}</p>
+                            <img class="user-image-frame"
+                                 src="${comment['owner']['profile_image_url']}"
+                                 alt="${_('Profile image for {}').format(comment['owner']['username'])}">
+                            </div>
                         % endfor
                         
+                    </div>
+                    
+                    <div class="mjCommentEntry">
+                        <p>Add a comment:</p>
+                        <form id="comment-form">
+                            <div style="width:100%">
+                                <textarea id="txtComment"></textarea>
+                                <div style="padding-top:20px;">
+                                    <span>
+                                        <input type="button"
+                                               value="Cancel"
+                                               onclick="onEntryCancel()"
+                                               style="min-width:90px;">
+                                        &nbsp;&nbsp;
+                                        <input type="submit"
+                                               style="min-width:90px;">
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     
                      <div class="returnLink">

@@ -5,6 +5,7 @@ from django.utils.translation import ugettext as _
 from openedx.core.djangolib.js_utils import (
     dump_js_escaped_json, js_escaped_string
 )
+from openedx.core.djangoapps.user_api.accounts.image_helpers import get_profile_image_urls_for_user
 %>
 
 <%namespace name='static' file='/static_content.html'/>
@@ -31,12 +32,12 @@ from openedx.core.djangolib.js_utils import (
         padding: 30px 20px;
     }
     
-    .mjTask {
-        margin-bottom: 50px;
-        padding: 0px 20px;
+    .myjournal-content {
+      padding: 0px 20px;
     }
     
     .mjEntry {
+        margin-bottom: 50px;
         border: 1px solid #E1E1E1;
         padding:30px;
     }
@@ -50,30 +51,30 @@ from openedx.core.djangolib.js_utils import (
 <div class="container">
     <div class="myjournal-wrapper">
         <main id="main" aria-label="Content" tabindex="-1">
-             
-           
-            <div class="mjHeader" style="display:flex">
+            
+             <div class="mjHeader" style="display:flex">
                 <div style="width:200">
-                    <h2>MyJournal Entries</h2>
+                    <h2><a href="${myjournal_base_url}">MyJournal Entries</a></h2>
                 </div>
-                <div style="width:200; padding-left:20px">
-                    <h2><a href="${community_entries_url}">Community Entries</a></h2>
+                <div style="width:200;padding-left:20px;">
+                    <h2>Community Entries</a></h2>
                 </div>
             </div>
             
-            
             <section class="myjournal-content">
            
-                % for task in tasks:
-                    <div class="mjTask">
-                        <p>${task['sequence']} ) ${task['title']} : ${task['description']}</p>
-                        <br/>
-                        <div class="mjEntry">
-                            <p>${task['entry']['excerpt']}</p>
-                            <div class="mjEntryLink">
-                                <a href="${task['entry']['url']}">View entry</a>
-                            </div>
-                        </div>
+                <h3>Entries</h3>
+                
+                  % for entry in entries:
+                    <div class="mjEntry">
+                        <p>${entry['task']}</p>
+                        <p>${entry['excerpt']}</p>
+                        <p>By: ${entry['owner']['username']}</p>
+                        <img class="user-image-frame"
+                             src="${entry['owner']['profile_image_url']}"
+                             alt="${_('Profile image for {}').format(entry['owner']['username'])}">
+                        <p><a href="${myjournal_base_url}community/entries/${entry['id']}">View entry</a></p>
+                      
                     </div>
                 % endfor
                 

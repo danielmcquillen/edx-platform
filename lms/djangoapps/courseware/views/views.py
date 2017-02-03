@@ -653,7 +653,7 @@ def course_about(request, course_id):
         }
         inject_coursetalk_keys_into_context(context, course_key)
 
-        return render_to_response('courseware/course_about.html', context)
+        return render_to_response('courseware/get_module', context)
 
 
 @transaction.non_atomic_requests

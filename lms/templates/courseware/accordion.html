@@ -35,6 +35,10 @@ else:
       font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     }
   
+      .course-index .accordion .course-navigation .button-chapter {
+          color: #000;
+      }
+  
     .course-index .accordion .course-navigation .chapter-content-container .chapter-menu {
         display: none;
     }
@@ -125,6 +129,7 @@ else:
    aria-controls="${chapter['display_id']}-child"
    aria-expanded="false">
     <span class="group-heading ${active_class}" aria-label="${aria_label}">
+        <span class="icon fa fa-caret-right" aria-hidden="true"></span>
         ${chapter['display_name']}
     </span>
 </a>

@@ -1027,6 +1027,22 @@ EVENT_TRACKING_BACKENDS = {
                 }
             ]
         }
+    },
+    'aws_lambda': {
+        'ENGINE': 'eventtracking.backends.routing.RoutingBackend',
+        'OPTIONS': {
+            'backends': {
+                'aws_lambda': {'ENGINE': 'eventtracking.backends.aws_lambda.AwsLambdaBackend'}
+            },
+            'processors': [
+                {
+                    'ENGINE': 'eventtracking.processors.whitelist.NameWhitelistProcessor',
+                    'OPTIONS': {
+                        'whitelist': []
+                    }
+                }
+            ]
+        }
     }
 }
 EVENT_TRACKING_PROCESSORS = []

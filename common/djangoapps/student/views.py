@@ -1325,7 +1325,6 @@ def login_user(request, error=""):  # pylint: disable=too-many-statements,unused
         'username': username,
         'fullname': user.profile.name
     }
-    track_data = {}
     with tracker.get_tracker().context("edx.bi.user.account.authenticated", ibio_track_context):
         tracker.emit("edx.bi.user.account.authenticated", data=ibio_track_data)
 

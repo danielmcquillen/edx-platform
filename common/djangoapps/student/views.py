@@ -1313,17 +1313,18 @@ def login_user(request, error=""):  # pylint: disable=too-many-statements,unused
         LoginFailures.clear_lockout_counter(user)
 
     # Track the user's sign in
+
+    # iBio: Track locally.
+    track_data = {
+        'user_id': user.id,
+        'email': email,
+        'username': username,
+        'fullname': user.profile.name
+    }
+    tracker.emit("edx.bi.user.account.authenticated", data=track_data)
+
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
         tracking_context = tracker.get_tracker().resolve_context()
-
-        # iBio: Track locally.
-        track_data = {
-            'user_id': user.id,
-            'email': email,
-            'username': username,
-            'fullname': user.profile.name
-        }
-        tracker.emit("edx.bi.user.account.authenticated", data=track_data)
 
         analytics.identify(
             user.id,
@@ -1772,24 +1773,34 @@ def create_account_with_params(request, params):
         running_pipeline['kwargs']['data_sharing_consent'] = form.cleaned_data.get('data_sharing_consent', None)
 
     # Track the user's registration
+    # iBio: pull identity_args out of Segment-only if block below so we can use it too.
+    identity_args = [
+        user.id,  # pylint: disable=no-member
+        {
+            'email': user.email,
+            'username': user.username,
+            'fullname': profile.fullname,  # iBio
+            'name': profile.name,
+            # Mailchimp requires the age & yearOfBirth to be integers, we send a sane integer default if falsey.
+            'age': profile.age or -1,
+            'yearOfBirth': profile.year_of_birth or datetime.datetime.now(UTC).year,
+            'education': profile.level_of_education_display,
+            'address': profile.mailing_address,
+            'gender': profile.gender_display,
+            'country': unicode(profile.country),
+        }
+    ]
+
+    # iBio : Track locally
+    track_context = {
+        'user_id': user.id
+    }
+    with tracker.get_tracker().context("edx.bi.user.account.registered", track_context):
+        tracker.emit("edx.bi.user.account.registered", data=identity_args[1])
+
+    # iBio: This is Open edX's block for tracking via Segment
     if hasattr(settings, 'LMS_SEGMENT_KEY') and settings.LMS_SEGMENT_KEY:
         tracking_context = tracker.get_tracker().resolve_context()
-        identity_args = [
-            user.id,  # pylint: disable=no-member
-            {
-                'email': user.email,
-                'username': user.username,
-                'fullname' : profile.fullname,  #iBio
-                'name': profile.name,
-                # Mailchimp requires the age & yearOfBirth to be integers, we send a sane integer default if falsey.
-                'age': profile.age or -1,
-                'yearOfBirth': profile.year_of_birth or datetime.datetime.now(UTC).year,
-                'education': profile.level_of_education_display,
-                'address': profile.mailing_address,
-                'gender': profile.gender_display,
-                'country': unicode(profile.country),
-            }
-        ]
 
         if hasattr(settings, 'MAILCHIMP_NEW_USER_LIST_ID'):
             identity_args.append({
@@ -1797,14 +1808,6 @@ def create_account_with_params(request, params):
                     "listId": settings.MAILCHIMP_NEW_USER_LIST_ID
                 }
             })
-
-        #iBio : Track locally
-        track_context = {
-            'user_id' : user.id
-        }
-        with tracker.get_tracker().context("edx.bi.user.account.registered", track_context):
-            tracker.emit("edx.bi.user.account.registered", data=identity_args[1])
-
         analytics.identify(*identity_args)
 
         analytics.track(

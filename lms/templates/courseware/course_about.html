@@ -185,12 +185,23 @@ from openedx.core.lib.courses import course_image_url
 
       </section>
       % if get_course_about_section(request, course, "video"):
-      <a href="#video-modal" class="media" rel="leanModal">
-        <div class="hero">
-          <img src="${course_image_urls['large']}" alt="" />
-          <div class="play-intro"></div>
+        <div class="ibio-intro-video">
+        <div class="ibio-intro-video-wrapper" style="margin:10px;">
+            <div class="ibio-video-container">
+             <iframe width="100%"  src="https://www.youtube.com/embed/${course_details.intro_video}" frameborder="0" allowfullscreen></iframe>
+          </div>
         </div>
-      </a>
+       </div>
+
+
+      <!--
+       <a href="#video-modal" class="media" rel="leanModal">
+         <div class="hero">
+           <img src="${course_image_urls['large']}" alt="" />
+           <div class="play-intro"></div>
+         </div>
+       </a>
+      -->
       %else:
       <div class="media">
         <div class="hero">

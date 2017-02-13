@@ -712,9 +712,11 @@ TRACKING_SEGMENTIO_SOURCE_MAP = {
     'analytics-ios': 'mobile',
 }
 
-######################## GOOGLE ANALYTICS ###########################
+# iBio: Update to include GTM
+######################## GOOGLE IDs ###########################
 GOOGLE_ANALYTICS_ACCOUNT = None
 GOOGLE_ANALYTICS_LINKEDIN = 'GOOGLE_ANALYTICS_LINKEDIN_DUMMY'
+GOOGLE_TAG_MANAGER_ACCOUNT = None
 
 ######################## OPTIMIZELY ###########################
 OPTIMIZELY_PROJECT_ID = None

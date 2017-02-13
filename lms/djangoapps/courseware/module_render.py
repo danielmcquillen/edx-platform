@@ -116,7 +116,8 @@ def make_track_function(request):
     return function
 
 
-def toc_for_course(user, request, course, active_chapter, active_section, field_data_cache):
+# iBio: Update to include active position (i.e. unit)
+def toc_for_course(user, request, course, active_chapter, active_section, active_position, field_data_cache):
     '''
     Create a table of contents from the module store
 
@@ -191,6 +192,24 @@ def toc_for_course(user, request, course, active_chapter, active_section, field_
                 if is_section_active:
                     found_active_section = True
 
+                # iBio: Find units for section
+                # TODO Find out how units are pulled from a section
+                # by looking at existing code that builds "sequence-nav"
+                units = list()
+                for unit in section.get_display_items():
+                    unit_context = {
+                        'display_name': unit.display_name_with_default_escaped,
+                        'url_name': unit.url_name,
+                        'active': False,
+                        'position': 1
+                    }
+                    units.append(unit_context)
+
+                # iBio: Add position...this is pretty dicey and temporary
+                for index, unit in enumerate(units, start=1):
+                    unit['position'] = index
+                    unit['active'] = index == active_position and is_section_active
+
                 section_context = {
                     'display_name': section.display_name_with_default_escaped,
                     'url_name': section.url_name,
@@ -198,6 +217,7 @@ def toc_for_course(user, request, course, active_chapter, active_section, field_
                     'due': section.due,
                     'active': is_section_active,
                     'graded': section.graded,
+                    'units': units
                 }
                 _add_timed_exam_info(user, course, section, section_context)
 

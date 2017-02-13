@@ -65,7 +65,7 @@ class CoursewareIndex(View):
     @method_decorator(ensure_csrf_cookie)
     @method_decorator(cache_control(no_cache=True, no_store=True, must_revalidate=True))
     @method_decorator(ensure_valid_course_key)
-    def get(self, request, course_id, chapter=None, section=None, position=None):
+    def get(self, request, course_id, chapter=None, section=None, position=1):
         """
         Displays courseware accordion and associated content.  If course, chapter,
         and section are all specified, renders the page, or returns an error if they
@@ -395,6 +395,7 @@ class CoursewareIndex(View):
             self.course,
             self.chapter_url_name,
             self.section_url_name,
+            self.position,
             self.field_data_cache,
         )
         courseware_context['accordion'] = render_accordion(

@@ -196,19 +196,15 @@ def toc_for_course(user, request, course, active_chapter, active_section, active
                 # TODO Find out how units are pulled from a section
                 # by looking at existing code that builds "sequence-nav"
                 units = list()
-                for unit in section.get_display_items():
+                for index, unit in enumerate(section.get_display_items()):
                     unit_context = {
                         'display_name': unit.display_name_with_default_escaped,
                         'url_name': unit.url_name,
                         'active': False,
-                        'position': 1
+                        'position': index,
+                        'active': active_position and is_section_active
                     }
                     units.append(unit_context)
-
-                # iBio: Add position...this is pretty dicey and temporary
-                for index, unit in enumerate(units, start=1):
-                    unit['position'] = index
-                    unit['active'] = index == active_position and is_section_active
 
                 section_context = {
                     'display_name': section.display_name_with_default_escaped,

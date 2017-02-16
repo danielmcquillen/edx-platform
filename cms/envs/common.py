@@ -1032,7 +1032,7 @@ EVENT_TRACKING_BACKENDS = {
         'ENGINE': 'eventtracking.backends.routing.RoutingBackend',
         'OPTIONS': {
             'backends': {
-                'awslambda': {'ENGINE': 'eventtracking.backends.aws_lambda.AwsLambdaBackend'}
+                'awslambda': {'ENGINE': 'eventtracking.backends.awslambda.AwsLambdaBackend'}
             },
             'processors': [
                 {

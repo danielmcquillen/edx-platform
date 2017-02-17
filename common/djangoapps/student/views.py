@@ -1784,7 +1784,7 @@ def create_account_with_params(request, params):
         {
             'email': user.email,
             'username': user.username,
-            'fullname': profile.fullname,  # iBio
+            'fullname': profile.name,  # iBio
             'name': profile.name,
             # Mailchimp requires the age & yearOfBirth to be integers, we send a sane integer default if falsey.
             'age': profile.age or -1,

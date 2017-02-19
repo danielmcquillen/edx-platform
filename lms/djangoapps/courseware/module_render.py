@@ -200,9 +200,8 @@ def toc_for_course(user, request, course, active_chapter, active_section, active
                     unit_context = {
                         'display_name': unit.display_name_with_default_escaped,
                         'url_name': unit.url_name,
-                        'active': False,
                         'position': index,
-                        'active': index==active_position and is_section_active
+                        'active': is_section_active and index == active_position
                     }
                     units.append(unit_context)
 

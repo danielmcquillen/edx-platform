@@ -66,12 +66,13 @@ from openedx.core.lib.courses import course_image_url
       %>
     $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
       if(xhr.status == 200) {
-      	//iBio: Track enrollment in GA:
+      	//iBio: Track enrollment in Google Analytics
+	      var courseID = ${course.id | u}
 	      ga('send', {
 				  hitType: "event",
 				  eventCategory: "engagement",
 				  eventAction: "enroll",
-				  eventLabel: "${course.id | u}"
+				  eventLabel: courseID
 				});
         location.href = "${reverse('dashboard')}";
       } else if (xhr.status == 403) {
@@ -89,11 +90,13 @@ from openedx.core.lib.courses import course_image_url
 
     $('#class_enroll_form').on('ajax:complete', function(event, xhr) {
       if(xhr.status == 200) {
+      	//iBio: Track enrollment in Google Analytics
+      	var courseID = ${course.id | u}
       	ga('send', {
 		      hitType: "event",
 				  eventCategory: "engagement",
 				  eventAction: "enroll",
-				  eventLabel: "${course.id | u}"
+				  eventLabel: courseID
 				});
         if (xhr.responseText == "") {
           location.href = "${reverse('dashboard')}";

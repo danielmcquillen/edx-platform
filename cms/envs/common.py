@@ -1084,10 +1084,7 @@ OPTIONAL_APPS = (
     # Organizations App (http://github.com/edx/edx-organizations)
     'organizations',
 
-    # iBio Specific
-    # These have been set up in iBio configuration Ansible scripts
-    # so the proper pip installs should have been done during provisioning
-    'ibio_custom_form_app',
+
 )
 
 

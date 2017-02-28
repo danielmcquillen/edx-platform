@@ -2672,6 +2672,7 @@ ALL_LANGUAGES = (
 ### Apps only installed in some instances
 OPTIONAL_APPS = (
     'mentoring',
+    # iBio: we need problem_builder, so never remove...
     'problem_builder',
     'edx_sga',
 
@@ -2696,6 +2697,11 @@ OPTIONAL_APPS = (
     'enterprise',
     # Required by the Enterprise App
     'django_object_actions',  # https://github.com/crccheck/django-object-actions
+
+    # iBio Specific
+    # These have been set up in iBio configuration Ansible scripts
+    # so the proper pip installs should have been done during provisioning
+    'ibio_custom_form_app',
 )
 
 for app_name in OPTIONAL_APPS:

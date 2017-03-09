@@ -1,6 +1,8 @@
 <main id="main" aria-label="Content" tabindex="-1">
 <div class="account-settings-container">
-    <div class="wrapper-header">
+
+		<!-- iBio: We don't need the other two tabs, and therefore can hide all of them -->
+		<div class="wrapper-header" style="display:none">
         <h2 class="header-title"><%- gettext("Account Settings") %></h2>
         <div class="left list-inline account-nav" role="tablist">
             <% _.each(accountSettingsTabs, function(tab) { %>

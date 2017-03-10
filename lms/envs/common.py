@@ -2745,12 +2745,16 @@ COUNTRIES_OVERRIDE = {
 
 # which access.py permission name to check in order to determine if a course is visible in
 # the course catalog. We default this to the legacy permission 'see_exists'.
-COURSE_CATALOG_VISIBILITY_PERMISSION = 'see_exists'
+#COURSE_CATALOG_VISIBILITY_PERMISSION = 'see_exists'
+# iBio: Changing to 'see_in_catalog' per instructions I found in mailing list after struggling to hide a course with Advanced Settings in Studio
+COURSE_CATALOG_VISIBILITY_PERMISSION = 'see_in_catalog'
+
 
 # which access.py permission name to check in order to determine if a course about page is
 # visible. We default this to the legacy permission 'see_exists'.
-COURSE_ABOUT_VISIBILITY_PERMISSION = 'see_exists'
-
+# COURSE_ABOUT_VISIBILITY_PERMISSION = 'see_exists'
+# iBio: changing to 'see_about_page' per instructions I found in mailing list after struggling to hide a course with Advanced Settings in Studio
+COURSE_ABOUT_VISIBILITY_PERMISSION = 'see_about_page'
 
 # Enrollment API Cache Timeout
 ENROLLMENT_COURSE_DETAILS_CACHE_TIMEOUT = 60

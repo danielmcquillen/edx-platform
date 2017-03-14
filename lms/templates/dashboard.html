@@ -77,7 +77,11 @@ from openedx.core.djangolib.markup import HTML, Text
 
 <main id="main" aria-label="Content" tabindex="-1">
     <div class="container dashboard" id="dashboard-main">
-	    <h1 class="ibio-page-header">Dashboard</h1>
+
+	    <div class="ibio-page-header">
+		    <h1>${_("Dashboard")}</h1>
+	    </div>
+
       <div class="my-courses" id="my-courses">
         <header class="wrapper-header-courses">
           <h2 class="header-courses">${_("My Courses")}</h2>

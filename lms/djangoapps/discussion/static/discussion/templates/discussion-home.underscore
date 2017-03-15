@@ -25,7 +25,7 @@
           ) %>
     </span>
 	  </a>
-    <table class="home-helpgrid" display="none">
+    <table class="home-helpgrid" style="display:none">
       <tr class="helpgrid-row helpgrid-row-navigation">
         <th scope="row" class="row-title"><%- gettext("Find discussions") %></td>
         <td class="row-item">

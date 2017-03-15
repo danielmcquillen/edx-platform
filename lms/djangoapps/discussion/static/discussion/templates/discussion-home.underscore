@@ -7,13 +7,25 @@
   </section>
 
   <% if (window.ENABLE_DISCUSSION_HOME_PANEL) { %>
+
+
+
+		<!-- iBio hide help -->
+	  <script>
+		  function iBioShowHelp(){
+		  	$(".home-helpgrid").show("fast");
+		  }
+
+	  </script>
+		<a href="javascript:iBioShowHelp()">
     <span class="label label-settings">
       <%- interpolate(
-            gettext("How to use %(platform_name)s discussions"),
+            gettext("How do I use %(platform_name)s discussions?"),
             {platform_name: window.PLATFORM_NAME}, true
           ) %>
     </span>
-    <table class="home-helpgrid">
+	  </a>
+    <table class="home-helpgrid" display="none">
       <tr class="helpgrid-row helpgrid-row-navigation">
         <th scope="row" class="row-title"><%- gettext("Find discussions") %></td>
         <td class="row-item">

@@ -20,7 +20,7 @@
 		<a href="javascript:iBioShowHelp()">
     <span class="label label-settings">
       <%- interpolate(
-            gettext("How do I use %(platform_name)s discussions?"),
+            gettext("(Click for help on using Discussions .)"),
             {platform_name: window.PLATFORM_NAME}, true
           ) %>
     </span>

@@ -316,7 +316,9 @@
         };
 
         Sequence.prototype.link_for = function(position) {
-            return this.$('#sequence-list .nav-item[data-element=' + position + ']');
+            //iBio: Changing this to grab from left nav, not top nav
+            //return this.$('#sequence-list .nav-item[data-element=' + position + ']');
+            return $('#ibio-sequence-list .nav-item[data-element=' + position + ']');
         };
 
         Sequence.prototype.mark_visited = function(position) {

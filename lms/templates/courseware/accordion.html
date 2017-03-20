@@ -33,6 +33,7 @@ else:
      role="group"
      aria-label="${chapter['display_name']} submenu">
     <div class="chapter-menu">
+        
         % for section in chapter['sections']:
         <div class="menu-item ${'active' if 'active' in section and section['active'] else ''} ${'graded'  if 'graded' in section and section['graded'] else ''}">
             <a class="accordion-nav" href="${reverse('courseware_section', args=[course_id, chapter['url_name'], section['url_name']])}">
@@ -82,22 +83,43 @@ else:
                 % endif
             </a>
 	          <div class="subsection-content-container">
-							<div class="subsection-menu">
-								% for unit in section['units'] :
-									<div class="menu-item ${'active' if 'active' in unit and unit['active'] else ''}">
-										<a class="accordion-nav" href="${reverse('courseware_position', args=[course_id, chapter['url_name'], section['url_name'], unit['position']])}">
-											<p class="accordion-display-name ${'active' if 'active' in unit and unit['active'] else ''}">
-												${unit['display_name']} ${Text(_('{span_start}current section{span_end}')).format(span_start=HTML('<span class="sr">'), span_end=HTML('</span>'),) if 'active' in unit and unit['active'] else ''}
-											</p>
-										</a>
-									</div>
-								% endfor
-                </div>
-            </div>
-        </div>
+							  <div class="subsection-menu" id="${'ibio-sequence-list' if 'active' in section and section['active'] else ''}">
+                    <%doc>
+                      iBio: if this subsection is active, write out links that use Sequence front end navigation code
+                            otherwise, just write out real links. Also, make nav button's data-* attributes look just like sequence button,
+                            so we can use sequence's underscore code.
+                    </%doc>
+                    % for idx, unit in enumerate(section['units']) :
+                    <div class="menu-item">
+                        
+                            % if 'active' in section and section['active'] :
+                            <a id="tab_${idx}"
+                               class="accordion-nav ibio-nav-item ${'active' if 'active' in unit and unit['active'] else ''}"
+                               href="${unit['position']}"
+                               data-id="${unit['id']}"
+                               data-element="${idx+1}"
+                               data-page-title="${unit['page_title']}"
+                               data-path=""
+                            >
+                            % else :
+                            <a class="accordion-nav" href="${reverse('courseware_position', args=[course_id, chapter['url_name'], section['url_name'], unit['position']])}">
+                            % endif
+                            
+                              <p class="accordion-display-name ${'active' if 'active' in unit and unit['active'] else ''}">
+                                ${unit['display_name']} ${Text(_('{span_start}current section{span_end}')).format(span_start=HTML('<span class="sr">'), span_end=HTML('</span>'),) if 'active' in unit and unit['active'] else ''}
+                              </p>
+                            </a>
+                       
+                    </div> <!-- ./menu-item -->
+                    % endfor
+                </div> <!-- ./subsection-menu -->
+            </div> <!-- ./subsection-content-container -->
+        </div> <!-- ./menu-item -->
         % endfor
-    </div>
-</div>
+    
+    </div> <!-- ./chapter-menu -->
+</div> <!-- ./chapter-content-container -->
+
 </%def>
 
 % for chapter in toc:

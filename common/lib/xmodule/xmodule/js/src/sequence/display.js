@@ -61,7 +61,12 @@
         };
 
         Sequence.prototype.bind = function() {
-            this.$('#sequence-list .nav-item').click(this.goto);
+
+            //iBio: changing this to look for sequence buttons in the left nav
+            //      rather than in the usual sequence / content section
+            //this.$('#sequence-list .nav-item').click(this.goto);
+            $('#ibio-sequence-list .ibio-nav-item').click(this.goto);
+
             this.el.on('bookmark:add', this.addBookmarkIconToActiveNavItem);
             this.el.on('bookmark:remove', this.removeBookmarkIconFromActiveNavItem);
             this.$('#sequence-list .nav-item').on('focus mouseenter', this.displayTabTooltip);

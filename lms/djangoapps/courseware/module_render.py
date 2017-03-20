@@ -192,15 +192,17 @@ def toc_for_course(user, request, course, active_chapter, active_section, active
                 if is_section_active:
                     found_active_section = True
 
-                # iBio: Find units for section
-                # TODO Find out how units are pulled from a section
-                # by looking at existing code that builds "sequence-nav"
+                # iBio:
+                # Find units for section by looking at existing code
+                # that builds "sequence-nav"
                 units = list()
                 for index, unit in enumerate(section.get_display_items(), 1):
                     unit_context = {
                         'display_name': unit.display_name_with_default_escaped,
                         'url_name': unit.url_name,
+                        'id': unit.scope_ids.usage_id.to_deprecated_string(),
                         'position': index,
+                        'page_title': unit.display_name_with_default_escaped,
                         'active': is_section_active and index == active_position
                     }
                     units.append(unit_context)

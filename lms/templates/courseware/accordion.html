@@ -94,7 +94,7 @@ else:
                         
                             % if 'active' in section and section['active'] :
                             <a id="tab_${idx}"
-                               class="accordion-nav ibio-nav-item ${'active' if 'active' in unit and unit['active'] else ''}"
+                               class="accordion-nav ibio-nav-item "
                                href="${unit['position']}"
                                data-id="${unit['id']}"
                                data-element="${idx+1}"
@@ -105,7 +105,7 @@ else:
                             <a class="accordion-nav" href="${reverse('courseware_position', args=[course_id, chapter['url_name'], section['url_name'], unit['position']])}">
                             % endif
                             
-                              <p class="accordion-display-name ${'active' if 'active' in unit and unit['active'] else ''}">
+                              <p class="accordion-display-name">
                                 ${unit['display_name']} ${Text(_('{span_start}current section{span_end}')).format(span_start=HTML('<span class="sr">'), span_end=HTML('</span>'),) if 'active' in unit and unit['active'] else ''}
                               </p>
                             </a>

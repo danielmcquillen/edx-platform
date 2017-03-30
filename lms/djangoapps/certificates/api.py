@@ -538,7 +538,9 @@ def emit_certificate_event(event_name, user, course_id, course=None, event_data=
         course = modulestore().get_course(course_id, depth=0)
     context = {
         'org_id': course.org,
-        'course_id': unicode(course_id)
+        'course_id': unicode(course_id),
+        #iBio: user id should be in context
+        'user_id': user.id,
     }
     data = {
         'user_id': user.id,

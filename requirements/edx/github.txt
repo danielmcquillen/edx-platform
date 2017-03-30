@@ -76,7 +76,7 @@ git+https://github.com/edx/XBlock.git@xblock-0.4.13#egg=XBlock==0.4.13
 
 # Use iBio Event Tracker
 #-e git+https://github.com/edx/event-tracking.git@0.2.1#egg=event-tracking==0.2.1
--e git+https://github.com/danielmcquillen/event-tracking.git@master#egg=event-tracking==0.2.3
+-e git+https://github.com/danielmcquillen/event-tracking.git@master#egg=event-tracking==0.2.4
 
 # Exta field for iBio User Registration
 -e git+https://github.com/danielmcquillen/ibio-custom-form-app.git@master#egg=ibio-custom-form-app==1.0.13

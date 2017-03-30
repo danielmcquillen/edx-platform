@@ -74,9 +74,9 @@ git+https://github.com/edx/lettuce.git@0.2.20.002#egg=lettuce==0.2.20.002
 git+https://github.com/edx/XBlock.git@xblock-0.4.13#egg=XBlock==0.4.13
 -e git+https://github.com/edx/codejail.git@a320d43ce6b9c93b17636b2491f724d9e433be47#egg=codejail==0.0
 
-# Use iBio Event Tracker
+# Use iBio Event Tracker (Get latest version)
 #-e git+https://github.com/edx/event-tracking.git@0.2.1#egg=event-tracking==0.2.1
--e git+https://github.com/danielmcquillen/event-tracking.git@master#egg=event-tracking==0.2.5
+-e git+https://github.com/danielmcquillen/event-tracking.git@master#egg=event-tracking
 
 # Exta field for iBio User Registration
 -e git+https://github.com/danielmcquillen/ibio-custom-form-app.git@master#egg=ibio-custom-form-app==1.0.13

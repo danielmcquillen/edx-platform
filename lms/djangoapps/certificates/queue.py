@@ -105,7 +105,7 @@ class XQueueCertInterface(object):
         )
         self.whitelist = CertificateWhitelist.objects.all()
         self.restricted = UserProfile.objects.filter(allow_certificate=False)
-        self.use_https = True
+        self.use_https = False
 
     def regen_cert(self, student, course_id, course=None, forced_grade=None, template_file=None, generate_pdf=True):
         """(Re-)Make certificate for a particular student in a particular course
@@ -490,10 +490,14 @@ class XQueueCertInterface(object):
             example_cert (ExampleCertificate)
 
         """
+
+        #iBio : making updates per https://groups.google.com/d/msg/openedx-ops/xfDiN7bTSXY/1Vp27udlAgAJ
+        course = modulestore().get_course(example_cert.course_key, depth=0)
+
         contents = {
             'action': 'create',
             'course_id': unicode(example_cert.course_key),
-            'course_name': unicode(example_cert.course_key),
+            'course_name': course.display_name or unicode(example_cert.course_key),
             'name': example_cert.full_name,
             'template_pdf': example_cert.template,
 

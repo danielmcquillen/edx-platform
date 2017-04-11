@@ -1,7 +1,7 @@
 <%page expression_filter="h" args="bookmark_id, is_bookmarked" />
 <%! from django.utils.translation import ugettext as _ %>
 
-<div class="bookmark-button-wrapper">
+<div class="bookmark-button-wrapper" data-tooltip="${_('Bookmark this page')}">
   <button class="btn bookmark-button ${"bookmarked" if is_bookmarked else ""}"
     aria-pressed="${"true" if is_bookmarked else "false"}"
     data-bookmark-id="${bookmark_id}">

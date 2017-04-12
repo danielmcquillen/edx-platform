@@ -1,11 +1,13 @@
 <%inherit file="accomplishment-base.html" />
 <%! from django.utils.translation import ugettext as _ %>
 
+<!-- iBio : iBiology Courses specific Certificate template -->
+
 % if user.is_authenticated() and user.id == int(accomplishment_user_id):
 <%include file="_accomplishment-banner.html" />
 % endif
 <%include file="_accomplishment-introduction.html" />
-<h2>Test</h2>
+
 <%include file="_accomplishment-rendering.html" />
 <div class="wrapper-about">
     <aside role="complementary" class="about" aria-label="About edX Certificates">

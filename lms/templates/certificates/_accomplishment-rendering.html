@@ -15,7 +15,7 @@ course_mode_class = course_mode if course_mode else ''
             <span class="deco-corner deco-corner-bl"></span>
             <span class="deco-corner deco-corner-br"></span>
 
-	          <div id="ibio-certificate-logo" style="display:flex;justify-content: center;width:100%;">
+	          <div id="ibio-certificate-logo" style="display:flex;justify-content: center;width:100%;margin-bottom:20px;">
 		          <img src="/static/ibio-openedx-theme/images/logo-color-on-white.png" style="width:254px; height:69px;"/>
 	          </div>
 
@@ -77,14 +77,7 @@ course_mode_class = course_mode if course_mode else ''
                             <img class="organization-logo" src="${logo_src}" alt="${platform_name}">
                         </div>
                     </li>
-
-                    % if organization_logo:
-                    <li class="wrapper-organization">
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
-                        </div>
-                    </li>
-                    % endif
+	                
                 </ul>
             </div>
         </div>

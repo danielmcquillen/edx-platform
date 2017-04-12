@@ -18,6 +18,29 @@ course_mode_class = course_mode if course_mode else ''
     <title>${document_title}</title>
 
     <%static:css group='style-certificates'/>
+
+	   <!-- iBio: Comprehensive theme not working for cert styles, so embedding styles here -->
+	<style>
+		
+		.ibio-certificate-logo-container {
+			display: flex;
+			justify-content: center;
+			width: 100%;
+			margin-bottom: 20px;
+		}
+
+	  .ibio-certificate-logo {
+	    width: 254px;
+	    height: 69px;
+	  }
+
+		.accomplishment-summary {
+		  margin-left: 10% !important;
+		  margin-right: 10% !important;
+		  width: 80% !important;
+		}
+
+	</style>
 </head>
 
 <body class="layout-accomplishment view-valid-accomplishment ${dir_rtl} certificate certificate-${course_mode_class}" data-view="valid-accomplishment">

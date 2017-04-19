@@ -1,0 +1,65 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="pagetitle">${_("iBiology Speakers")}</%block>
+
+<%block name="header_extras">
+
+<style>
+	
+	.ibio-speakers-grid {
+		display: flex;
+		width: 100%;
+		max-width: 1180px;
+		flex-wrap: wrap;
+		
+	}
+	
+	.ibio-speaker-card {
+		width: 230px;
+		border: 1px solid #e1e1e1;
+		border-radius: 5px;
+		margin: 0px 20px 20px;
+	}
+	
+	.ibio-speaker-card-content {
+		padding: 20px;
+	}
+	
+	.ibio-speaker-thumbnail {
+		width:100%;
+	}
+	
+	
+</style>
+
+</%block>
+
+<%def name="ibio_speaker_card(name, speaker_slug, short_description)">
+    <div class="ibio-speaker-card">
+	    <img class="ibio-speaker-thumbnail" src="/static/ibio-openedx-theme/images/speakers/${speaker_slug}.jpg" />
+	    <div class="ibio-speaker-card-content">
+	      <div class="ibio-speaker-name">
+	        ${name}
+	      </div>
+	      <div class="ibio-speaker-description">
+	        ${short_description}
+		      <br/>
+		      <a href="/speakers/${speaker_slug}">View bio</a>
+		      
+	      </div>
+	    </div>
+    </div>
+</%def>
+
+<main id="main" aria-label="Content" tabindex="-1">
+    <section class="container about">
+        <h1>${_("iBiology Speakers")}</h1>
+        <div class="ibio-speakers-grid">
+	        % for speaker in ibio_speaker_arr:
+				    ${ibio_speaker_card(name=speaker['name'],  speaker_slug=speaker['speaker_slug'], short_description="")}
+					% endfor
+        </div>
+    </section>
+</main>

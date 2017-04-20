@@ -61,6 +61,14 @@ from openedx.core.djangolib.markup import HTML, Text
   % endif
 </%block>
 
+<section class="breadcrumb">
+		<div class="row" >
+			<div class="col col-12" style="width:100%;">
+				<a href="/">iBiology Courses </a> :: ${_("Dashboard")}
+			</div>
+		</div>
+	</section>
+
 <div class="dashboard-notifications" tabindex="-1">
     %if message:
         <div class="dashboard-banner">

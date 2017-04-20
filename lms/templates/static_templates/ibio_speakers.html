@@ -26,12 +26,22 @@
 </%def>
 
 <main id="main" aria-label="Content" tabindex="-1" >
-    <section class="container ibio-speakers">
-        <h1>${_("iBiology Speakers")}</h1>
-        <div class="ibio-speakers-grid">
-	        % for speaker in ibio_speaker_arr:
-				    ${ibio_speaker_card(name=speaker['name'],  speaker_slug=speaker['speaker_slug'], short_description="")}
-					% endfor
-        </div>
-    </section>
+	
+	<section class="breadcrumb">
+		<div class="row" >
+			<div class="col col-12" style="width:100%;">
+				<a href="/">iBiology Courses </a> :: Speakers
+			</div>
+		</div>
+	</section>
+	
+  <section class="container ibio-speakers">
+      <h1>${_("iBiology Speakers")}</h1>
+      <div class="ibio-speakers-grid">
+        % for speaker in ibio_speaker_arr:
+			    ${ibio_speaker_card(name=speaker['name'],  speaker_slug=speaker['speaker_slug'], short_description="")}
+				% endfor
+      </div>
+  </section>
+	
 </main>

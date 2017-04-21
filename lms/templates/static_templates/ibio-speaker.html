@@ -1,0 +1,61 @@
+<%page expression_filter="h"/>
+<%! from django.utils.translation import ugettext as _ %>
+<%inherit file="../main.html" />
+
+<%block name="header_extras">
+
+</%block>
+
+<%block name="bodyextra">
+
+<main id="main" aria-label="Content" class="ibio-speaker-bio" tabindex="-1">
+
+	<section class="breadcrumb">
+		<div class="row" >
+			<div class="col col-12" style="width:100%;">
+				<a href="/">iBiology Courses </a> :: <a href="/speakers">Speakers</a> :: ${ibio_speaker['name']}
+			</div>
+		</div>
+	</section>
+	
+	<section class="video-header-row">
+		<div class="row" >
+			<div class="col col-12" style="width:100%;">
+					<div class="video-container" style="overflow: hidden;position: relative;padding-bottom: 45%;">
+						<iframe  src='${ibio_speaker['videoURL']}?rel=0' frameborder="0" allowfullscreen style="height:100%;left:0;position:absolute;top:0;width:100%;" ></iframe>
+					</div>
+			</div> <!-- ./col -->
+		</div>
+	</section>
+	
+	<section style="margin-top:40px;">
+		<div class="row">
+			<div class="col col-12">
+	
+				<h1 class="speaker-header">
+					<span class="speaker-label">Speaker Bio:</span>
+					<span class="speaker-name">
+						${ibio_speaker['name']}
+					</span>
+					<span class="speaker-suffix">
+						${ibio_speaker['suffix']}
+					</span>
+				</h1>
+				<p class="speaker-title">
+						${ibio_speaker['title']}
+				</p>
+				<p class="speaker-university">
+						${ibio_speaker['university']}
+				</p>
+				<div class="speaker-bio">
+					<%block name="speaker_bio" />
+				</div>
+		
+			</div> <!-- /.col -->
+		</div> <!-- /.row -->
+	</section> <!-- iBio speaker bio -->
+</main>
+	
+</%block>
+
+	

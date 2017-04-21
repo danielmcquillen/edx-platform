@@ -54,4 +54,9 @@ for key, value in settings.MKTG_URL_LINK_MAP.items():
     # version of the map key
     urlpatterns += (url(r'^%s$' % key.lower(), 'render', {'template': template}, name=value),)
 
+
+# iBio: Add in new iBio marketing page urls
+urlpatterns += (url(r'^speakers$', 'ibio_speakers', name="speakers"),)
+urlpatterns += (url(r'^speakers/([_a-zA-Z0-9-]+)$', 'ibio_speaker', name="speakers"),)
+
 urlpatterns = patterns(*urlpatterns)

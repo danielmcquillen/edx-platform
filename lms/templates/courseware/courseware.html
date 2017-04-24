@@ -51,6 +51,13 @@ ${static.get_page_title_breadcrumbs(course_name())}
   % endfor
 % endif
 
+## iBio: Include print stylesheet for HTDGS course
+##       which should always have a course number 'iBio1'
+
+% if course_number == 'iBio1':
+	<link href="/static/ibio-openedx-theme/css/ibio-course-content-print.css" type="text/css" rel="stylesheet" media="print">
+% endif
+
 </%block>
 
 <%block name="headextra">

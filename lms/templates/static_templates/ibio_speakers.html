@@ -2,7 +2,7 @@
 <%! from django.utils.translation import ugettext as _ %>
 <%inherit file="../main.html" />
 
-<%block name="pagetitle">${_("iBiology Courses Speakers")}</%block>
+<%block name="pagetitle">${_("iBiology Speakers")}</%block>
 
 <%def name="ibio_speaker_card(name, suffix, university, title, speaker_slug, short_description)">
     <div class="speaker-card">
@@ -32,7 +32,7 @@
 </%def>
 
 <main id="main" aria-label="Content" tabindex="-1" >
-	
+
 	<section class="breadcrumb">
 		<div class="row" >
 			<div class="col col-12" style="width:100%;">
@@ -41,13 +41,13 @@
 		</div>
 	</section>
 
-
-	<section>
+  <section class="container ibio-speakers">
+      <h1>${_("iBiology Speakers")}</h1>
       <div class="ibio-speakers-grid">
         % for speaker in ibio_speaker_arr:
 			    ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
 				% endfor
       </div>
   </section>
-	
+
 </main>

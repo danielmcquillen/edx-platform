@@ -41,12 +41,16 @@ course_mode_class = course_mode if course_mode else ''
 		  width: 80% !important;
 		}
 
+		.accomplishment-rendering {
+			border:1px solid #ccc !important;
+		}
+
 		.accomplishment-signatories {
 			border-bottom: none !important;
 		}
 
 		@media print {
-				.accomplishment-signatories {
+				..wrapper-statement-and-signatories {
 					border-bottom: none !important;
 				}
 		}

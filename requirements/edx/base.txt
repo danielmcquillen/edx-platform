@@ -200,3 +200,6 @@ py2neo==3.1.2
 
 # for calculating coverage
 -r coverage.txt
+
+# ibio : we use sentry for monitoring
+raven==6.0.0

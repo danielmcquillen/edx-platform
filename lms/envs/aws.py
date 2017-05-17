@@ -899,11 +899,13 @@ DOC_LINK_BASE_URL = ENV_TOKENS.get('DOC_LINK_BASE_URL', DOC_LINK_BASE_URL)
 
 ENTERPRISE_ENROLLMENT_API_URL = ENV_TOKENS.get('ENTERPRISE_ENROLLMENT_API_URL', ENTERPRISE_ENROLLMENT_API_URL)
 
-import raven
+
+# iBio : I think sentry is pegging the CPU...taking out for now...
+#import raven
 # iBio Confgiure Sentry.io
-RAVEN_CONFIG = {
-    'dsn': 'https://785f171c1f6f41c49a9a29e927b2019c:0f0d2902097c444eb7cc8a91dbae8591@sentry.io/166275',
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
-    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
-}
+#RAVEN_CONFIG = {
+#    'dsn': 'https://785f171c1f6f41c49a9a29e927b2019c:0f0d2902097c444eb7cc8a91dbae8591@sentry.io/166275',
+#    # If you are using git, you can also automatically configure the
+#    # release based on the git info.
+#    'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+#}

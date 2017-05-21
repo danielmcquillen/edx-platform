@@ -32,7 +32,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Angela DePace",
-        "videoURL": "https://www.youtube.com/embed/Gs8oSvh6B4w",
+        "videoURL": "https://www.youtube.com/embed/QS-Gocu4hOw",
         "speaker_slug": "angela-depace",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
@@ -105,7 +105,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Clarissa Scholes",
-        "videoURL": "https://www.youtube.com/embed/QS-Gocu4hOw",
+        "videoURL": "https://www.youtube.com/embed/Q51ddaad5qIk",
         "speaker_slug": "clarissa-scholes",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",

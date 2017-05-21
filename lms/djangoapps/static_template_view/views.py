@@ -24,7 +24,7 @@ ibio_speaker_arr = [
 
     {
         "name": "Uri Alon",
-        "videoURL": "https://www.youtube.com/embed/tx40E4or_fg",
+        "videoURL": "https://www.youtube.com/embed/TI_7gUB9mSI",
         "speaker_slug": "uri-alon",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular Cell Biology",
@@ -40,7 +40,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Tejal Desai",
-        "videoURL": "https://www.youtube.com/embed/CuL5Mxw4Sg4",
+        "videoURL": "https://www.youtube.com/embed/iFy78gK0gDU",
         "speaker_slug": "tejal-desai",
         "suffix": "Ph.D.",
         "title": "Professor, Bioengineering and Therapeutic Sciences",
@@ -48,7 +48,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Cynthia Fuhrmann",
-        "videoURL": "https://www.youtube.com/embed/AHKCPkJDx68",
+        "videoURL": "https://www.youtube.com/embed/HHObjwfyJ0k",
         "speaker_slug": "cynthia-fuhrmann",
         "suffix": "Ph.D.",
         "title": "Assistant Dean for Career and Professional Development; Director, Center for Biomedical Career Development",
@@ -56,7 +56,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ryan Hernandez",
-        "videoURL": "https://www.youtube.com/embed/SfE-8Rgfbh8",
+        "videoURL": "https://www.youtube.com/embed/aSuuaDecIjE",
         "speaker_slug": "ryan-hernandez",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
@@ -65,7 +65,7 @@ ibio_speaker_arr = [
 
     {
         "name": "Asia Matthew-Onabanjo",
-        "videoURL": "https://www.youtube.com/embed/mhV-F14hzVM",
+        "videoURL": "https://www.youtube.com/embed/gI_JRiu4Qic",
         "speaker_slug": "asia-matthew-onabanjo",
         "suffix": "M.D./Ph.D. Candidate",
         "title": "Leslie Shaw Lab",
@@ -73,7 +73,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Kassie Ori-McKenney",
-        "videoURL": "https://www.youtube.com/embed/a0X5K-iW6Wk",
+        "videoURL": "https://www.youtube.com/embed/4uOjlWdRc2k",
         "speaker_slug": "kassie-ori-mckenney",
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular & Cellular Biology",
@@ -81,7 +81,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Sabine Petry",
-        "videoURL": "https://www.youtube.com/embed/9xadq5xR0hE",
+        "videoURL": "https://www.youtube.com/embed/P-cMmO8tSz4",
         "speaker_slug": "sabine-petry",
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular Biology ",
@@ -89,7 +89,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Indira Raman",
-        "videoURL": "https://www.youtube.com/embed/4mfvhqojSPA",
+        "videoURL": "https://www.youtube.com/embed/pulwjB08EWg",
         "speaker_slug": "indira-raman",
         "suffix": "Ph.D.",
         "title": "Professor, Neurobiology",
@@ -97,7 +97,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Randy Schekman",
-        "videoURL": "https://www.youtube.com/embed/KTaJTDUsGqM",
+        "videoURL": "https://www.youtube.com/embed/4_EIslN-qH0",
         "speaker_slug": "randy-schekman",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular & Cellular Biology; HHMI Investigator",
@@ -105,7 +105,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Clarissa Scholes",
-        "videoURL": "https://www.youtube.com/embed/OEX4WcDjoCE",
+        "videoURL": "https://www.youtube.com/embed/QS-Gocu4hOw",
         "speaker_slug": "clarissa-scholes",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
@@ -113,7 +113,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ben Vincent",
-        "videoURL": "https://www.youtube.com/embed/m1QcPRJh9SQ",
+        "videoURL": "https://www.youtube.com/embed/PZJdCPU4_g8",
         "speaker_slug": "ben-vincent",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
@@ -121,19 +121,16 @@ ibio_speaker_arr = [
     },
     {
         "name": "Keith Yamamoto",
-        "videoURL": "https://www.youtube.com/embed/IcwJSWONbHY",
+        "videoURL": "https://www.youtube.com/embed/0XlyTiGO794",
         "speaker_slug": "keith-yamamoto",
         "suffix": "Ph.D.",
         "title": "Professor, Cellular & Molecular Pharmacology; Vice Chancellor for Science Policy and Strategy",
         "university": "University of California, San Francisco"
     },
 
-
-
-
-
-
 ]
+
+
 
 if settings.STATIC_GRAB:
     valid_templates = valid_templates + [

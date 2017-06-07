@@ -105,7 +105,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Clarissa Scholes",
-        "videoURL": "https://www.youtube.com/embed/Q51ddaad5qIk",
+        "videoURL": "https://www.youtube.com/embed/51ddaad5qIk",
         "speaker_slug": "clarissa-scholes",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",

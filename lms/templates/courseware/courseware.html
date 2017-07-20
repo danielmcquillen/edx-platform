@@ -154,7 +154,8 @@ ${HTML(fragment.foot_html())}
 
       </div>
 
-      <div class="accordion">
+      <!-- iBio: Temp hack -->
+      <div class="accordion" class="min-width:279px;">
         <nav class="course-navigation" aria-label="${_('Course')}">
           % if accordion.strip():
             ${HTML(accordion)}

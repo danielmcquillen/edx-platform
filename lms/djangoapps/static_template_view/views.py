@@ -72,7 +72,7 @@ ibio_speaker_arr = [
         "university": "University of Massachusetts Medical School"
     },
     {
-        "name": "Kassie Ori-McKenney",
+        "name": "Kassandra Ori-McKenney",
         "videoURL": "https://www.youtube.com/embed/4uOjlWdRc2k",
         "speaker_slug": "kassie-ori-mckenney",
         "suffix": "Ph.D.",

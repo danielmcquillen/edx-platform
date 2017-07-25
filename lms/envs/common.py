@@ -689,7 +689,8 @@ EVENT_TRACKING_BACKENDS = {
                                       'edx.done.toggled',
                                       'edx.forum.thread.created',
                                       'edx.forum.response.created',
-                                      'edx.forum.comment.created']
+                                      'edx.forum.comment.created',
+                                      'xblock.problem_builder.submitted']
                     }
                 }
             ]

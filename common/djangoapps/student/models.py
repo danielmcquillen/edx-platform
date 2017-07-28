@@ -259,7 +259,7 @@ class UserProfile(models.Model):
         ('m', ugettext_noop('Male')),
         ('f', ugettext_noop('Female')),
         ('t', ugettext_noop('Transgender')),
-        ('p', ugettext_noop('Prefer Not to Say')),
+        ('p', ugettext_noop('Prefer not to say')),
         ('o', ugettext_noop('I do not identify with any of the listed options.'))
     )
     gender = models.CharField(

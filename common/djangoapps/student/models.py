@@ -253,32 +253,47 @@ class UserProfile(models.Model):
     this_year = datetime.now(UTC).year
     VALID_YEARS = range(this_year, this_year - 120, -1)
     year_of_birth = models.IntegerField(blank=True, null=True, db_index=True)
+
+    #iBio: updating gender options
     GENDER_CHOICES = (
         ('m', ugettext_noop('Male')),
         ('f', ugettext_noop('Female')),
-        # Translators: 'Other' refers to the student's gender
-        ('o', ugettext_noop('Other/Prefer Not to Say'))
+        ('t', ugettext_noop('Transgender')),
+        ('p', ugettext_noop('Prefer Not to Say'))
+        ('o', ugettext_noop('I do not identify with any of the listed options.'))
     )
     gender = models.CharField(
         blank=True, null=True, max_length=6, db_index=True, choices=GENDER_CHOICES
     )
+
+
+    #iBio: Subverting 'Level of Education' field to be "Career Stage"
 
     # [03/21/2013] removed these, but leaving comment since there'll still be
     # p_se and p_oth in the existing data in db.
     # ('p_se', 'Doctorate in science or engineering'),
     # ('p_oth', 'Doctorate in another field'),
     LEVEL_OF_EDUCATION_CHOICES = (
-        ('p', ugettext_noop('Doctorate')),
+        ('u', ugettext_noop("Undergraduate")),
         ('m', ugettext_noop("Master's or professional degree")),
-        ('b', ugettext_noop("Bachelor's degree")),
-        ('a', ugettext_noop("Associate degree")),
-        ('hs', ugettext_noop("Secondary/high school")),
-        ('jhs', ugettext_noop("Junior secondary/junior high/middle school")),
-        ('el', ugettext_noop("Elementary/primary school")),
-        # Translators: 'None' refers to the student's level of education
-        ('none', ugettext_noop("No formal education")),
-        # Translators: 'Other' refers to the student's level of education
-        ('other', ugettext_noop("Other education"))
+        ('p', ugettext_noop('Doctorate')),
+        ('r', ugettext_noop("Postdoctoral researcher")),
+        ('e', ugettext_noop("Early career faculty member (pre-tenure)")),
+        ('n', ugettext_noop("Non-tenure track faculty member")),
+        ('t', ugettext_noop("Tenured faculty")),
+        ('r', ugettext_noop("Researcher/staff scientist")),
+        ('a', ugettext_noop("Administrator")),
+        ('s', ugettext_noop("Professional development/career development staff")),
+        ('o', ugettext_noop("Other")),
+    #    ('b', ugettext_noop("Bachelor's degree")),
+    #    ('a', ugettext_noop("Associate degree")),
+    #    ('hs', ugettext_noop("Secondary/high school")),
+    #    ('jhs', ugettext_noop("Junior secondary/junior high/middle school")),
+    #    ('el', ugettext_noop("Elementary/primary school")),
+    #    # Translators: 'None' refers to the student's level of education
+    #    ('none', ugettext_noop("No formal education")),
+    #    # Translators: 'Other' refers to the student's level of education
+    #    ('other', ugettext_noop("Other education"))
     )
     level_of_education = models.CharField(
         blank=True, null=True, max_length=6, db_index=True,

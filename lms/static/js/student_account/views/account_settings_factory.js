@@ -134,7 +134,7 @@
                         {
                             view: new AccountSettingsFieldViews.DropdownFieldView({
                                 model: userAccountModel,
-                                title: gettext('Education Completed'),
+                                title: gettext('Career Stage'),
                                 valueAttribute: 'level_of_education',
                                 options: fieldsData.level_of_education.options,
                                 persistChanges: true

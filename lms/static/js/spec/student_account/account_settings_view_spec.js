@@ -43,7 +43,7 @@ define(['backbone',
                             {
                                 view: new FieldViews.DropdownFieldView({
                                     model: model,
-                                    title: 'Education Completed',
+                                    title: 'Career Stage',
                                     valueAttribute: 'level_of_education',
                                     options: Helpers.FIELD_OPTIONS
                                 })

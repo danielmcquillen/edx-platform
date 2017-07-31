@@ -283,6 +283,13 @@ class RegistrationView(APIView):
         # Add any Enterprise fields if the app is enabled
         insert_enterprise_fields(request, form_desc)
 
+        # iBio : ugly, ugly hack to get the form fields into the order that we want.
+        #        Unfortunately, the form set up is pretty rigid so this is the simplest
+        #        way to get e.g. user defined gender directly beneath Gender dropdown
+        f = form_desc.fields
+        if len(f) > 11 and f[11]['name'] == "gender_description" and f[4]['name'] == "gender":
+            f.insert(5, f.pop(11))
+
         return HttpResponse(form_desc.to_json(), content_type="application/json")
 
     @method_decorator(csrf_exempt)

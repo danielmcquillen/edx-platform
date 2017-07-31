@@ -294,11 +294,19 @@ class RegistrationView(APIView):
             for i, item in enumerate(f):
                 if f[i]['name'] == "gender_description":
                     user_gd_field = f.pop(i)
-                if f[i]['name'] == "gender":
-                    gd_field_index = i
-
+                    break
             if user_gd_field:
-                f.insert(gd_field_index + 1, user_gd_field)
+                for i, item in enumerate(f):
+                    if f[i]['name'] == "gender":
+                        f.insert(i + 1, user_gd_field)
+                        break
+
+            for i, item in enumerate(f):
+                if f[i]['name'] == "user_agreement_ibio_study":
+                    ibio_study_checkbox = f.pop(i)
+                    break
+            if ibio_study_checkbox:
+                f.append(ibio_study_checkbox)
         except Exception:
             logger.warning("iBio: Could not reorder registration fields")
 

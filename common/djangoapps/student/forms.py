@@ -179,14 +179,6 @@ class AccountCreationForm(forms.Form):
             "city": _("A city is required"),
             "country": _("A country is required")
         }
-
-        # iBio: Move extended profile fields above custom fields
-        for field in self.extended_profile_fields:
-            if field not in self.fields:
-                self.fields[field] = forms.CharField(required=False)
-
-        # iBio: have extra fields come after extended profile,
-        #      so we can qualify Gender selection with user-defined field.
         for field_name, field_value in extra_fields.items():
             if field_name not in self.fields:
                 if field_name == "honor_code":
@@ -225,6 +217,9 @@ class AccountCreationForm(forms.Form):
                         }
                     )
 
+        for field in self.extended_profile_fields:
+            if field not in self.fields:
+                self.fields[field] = forms.CharField(required=False)
 
     def clean_password(self):
         """Enforce password policies (if applicable)"""

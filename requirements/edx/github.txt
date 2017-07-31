@@ -79,7 +79,7 @@ git+https://github.com/edx/XBlock.git@xblock-0.4.13#egg=XBlock==0.4.13
 -e git+https://github.com/danielmcquillen/event-tracking.git@0.2.8#egg=event-tracking==0.2.8
 
 # Exta field for iBio User Registration
--e git+https://github.com/danielmcquillen/ibio-custom-form-app.git@master#egg=ibio-custom-form-app==1.0.14
+-e git+https://github.com/danielmcquillen/ibio-custom-form-app.git@master#egg=ibio-custom-form-app==1.0.15
 
 
 -e git+https://github.com/edx/django-splash.git@v0.2#egg=django-splash==0.2

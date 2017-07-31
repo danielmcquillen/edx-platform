@@ -41,6 +41,9 @@ from .accounts import (
 )
 from .accounts.api import check_account_exists
 from .serializers import CountryTimeZoneSerializer, UserSerializer, UserPreferenceSerializer
+import logging
+
+logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 
 class LoginSessionView(APIView):
@@ -286,9 +289,18 @@ class RegistrationView(APIView):
         # iBio : ugly, ugly hack to get the form fields into the order that we want.
         #        Unfortunately, the form set up is pretty rigid so this is the simplest
         #        way to get e.g. user defined gender directly beneath Gender dropdown
-        f = form_desc.fields
-        if len(f) > 11 and f[11]['name'] == "gender_description" and f[4]['name'] == "gender":
-            f.insert(5, f.pop(11))
+        try:
+            f = form_desc.fields
+            for i, item in enumerate(f):
+                if f[i]['name'] == "gender_description":
+                    user_gd_field = f.pop(i)
+                if f[i]['name'] == "gender":
+                    gd_field_index = i
+
+            if user_gd_field:
+                f.insert(gd_field_index + 1, user_gd_field)
+        except Exception:
+            logger.warning("iBio: Could not reorder registration fields")
 
         return HttpResponse(form_desc.to_json(), content_type="application/json")
 

@@ -1,32 +1,40 @@
-<div class="discussion-article view-discussion-home">
+<div class="discussion-article view-discussion-home"  >
+
   <section class="home-header">
     <span class="label"><%- gettext("Discussion Home") %></span>
-    <% if (window.courseName) { %>
-      <h1 class="home-title"><%- window.courseName %></h1>
-    <% } %>
   </section>
 
   <% if (window.ENABLE_DISCUSSION_HOME_PANEL) { %>
 
+		<p>This is the discussion forum home page. Use the navigation on the left to access different discussion threads.</p>
 
 
-		<!-- iBio hide help -->
-	  <script>
-		  function iBioShowHelp(){
-		  	$(".home-helpgrid").show("fast");
-		  }
+	  <h1 class="settings-header">Email Daily Digest</h1>
 
-	  </script>
-		<a href="javascript:iBioShowHelp()">
-    <span class="label label-settings">
-      <%- interpolate(
-            gettext("(Show quick help and settings)"),
-            {platform_name: window.PLATFORM_NAME}, true
-          ) %>
-    </span>
-	  </a>
-    <table class="home-helpgrid" style="display:none">
-      <tr class="helpgrid-row helpgrid-row-navigation">
+    <table class="home-settingsgrid">
+	     <tr>
+		     <td style="width:160px; padding:20px;" align="center">
+			      <label for="email-setting-checkbox">
+            <span class="sr"><%- gettext("Toggle Notifications Setting") %></span>
+            <span class="notification-checkbox">
+              <input type="checkbox" id="email-setting-checkbox" class="email-setting" name="email-notification" style="margin-right: 5px;"/>
+              <span class="icon fa fa-envelope" aria-hidden="true"></span>
+            </span>
+          </label>
+		     </td>
+		     <td>
+          <span class="row-description"><%- gettext("Check this box to receive an email digest once a day notifying you about new, unread activity from posts you are following.") %></span>
+        </td>
+      </tr>
+    </table>
+
+
+	  <h1 class="quickhelp-header">Quick Help</h1>
+
+	  <p>Here's a quick discription of the buttons and controls available in this discussion area.</p>
+
+    <table id="help-table" class="home-helpgrid" style="margin-top:10px;">
+      <tr class="helpgrid-row helpgrid-row-navigation" >
         <th scope="row" class="row-title"><%- gettext("Find discussions") %></td>
         <td class="row-item">
           <span class="icon fa fa-reorder" aria-hidden="true"></span>
@@ -41,7 +49,7 @@
           <span class="row-description"><%- gettext("Filter and sort topics") %></span>
         </td>
       </tr>
-      <tr class="helpgrid-row helpgrid-row-participation">
+      <tr class="helpgrid-row helpgrid-row-participation" >
         <th scope="row" class="row-title"><%- gettext("Engage with posts") %></td>
         <td class="row-item">
           <span class="icon fa fa-plus" aria-hidden="true"></span>
@@ -56,19 +64,7 @@
           <span class="row-description"><%- gettext("Follow or unfollow posts") %></span>
         </td>
       </tr>
-      <tr class="helpgrid-row helpgrid-row-notification">
-        <th scope="row" class="row-title"><%- gettext('Receive updates') %></td>
-        <td class="row-item-full" colspan="3">
-          <label for="email-setting-checkbox">
-            <span class="sr"><%- gettext("Toggle Notifications Setting") %></span>
-            <span class="notification-checkbox">
-              <input type="checkbox" id="email-setting-checkbox" class="email-setting" name="email-notification"/>
-              <span class="icon fa fa-envelope" aria-hidden="true"></span>
-            </span>
-          </label>
-          <span class="row-description"><%- gettext("Check this box to receive an email digest once a day notifying you about new, unread activity from posts you are following.") %></span>
-        </td>
-      </tr>
+
     </table>
   <% } %>
 </div>

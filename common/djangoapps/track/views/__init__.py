@@ -91,6 +91,15 @@ def server_track(request, event_type, event, page=None):
     if event_type.startswith("/event_logs") and request.user.is_staff:
         return  # don't log
 
+    # iBio: Ignore if user agent is status check from ELB.
+    #       Just continue if check fails.
+    try:
+        agent = _get_request_header(request, 'HTTP_USER_AGENT').decode('latin1')
+        if agent == "ELB-HealthChecker/1.0":
+            return
+    except:
+        pass
+
     try:
         username = request.user.username
     except:

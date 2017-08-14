@@ -14,6 +14,7 @@
                 country: null,
                 date_joined: '',
                 gender: null,
+                gender_description: '',
                 goals: '',
                 level_of_education: null,
                 mailing_address: '',

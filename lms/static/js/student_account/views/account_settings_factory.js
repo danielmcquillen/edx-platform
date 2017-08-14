@@ -150,6 +150,17 @@
                             })
                         },
                         {
+                            view: new AccountSettingsFieldViews.TextFieldView({
+                                model: userAccountModel,
+                                title: gettext('Gender Description'),
+                                valueAttribute: 'gender_description',
+                                helpMessage: gettext(
+                                    'If none of the gender options above apply to you, please describe your gender '  // eslint-disable-line max-len
+                                ),
+                                persistChanges: true
+                            })
+                        },
+                        {
                             view: new AccountSettingsFieldViews.DropdownFieldView({
                                 model: userAccountModel,
                                 title: gettext('Year of Birth'),

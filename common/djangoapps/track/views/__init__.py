@@ -29,7 +29,7 @@ def log_event(event):
     # to use eventtracker.emit(). So I'm just going to do this when the event we care about
     # from problem-builder comes through.
     if "event_type" in event and event['event_type'] == "xblock.problem_builder.submitted":
-        eventtracker.emit(event['eventtype'], event)
+        eventtracker.emit(event['event_type'], event)
         return
 
     tracker.send(event)

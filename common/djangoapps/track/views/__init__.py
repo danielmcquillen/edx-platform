@@ -28,7 +28,7 @@ def log_event(event):
     # doesn't use eventracking, rather than local tracking, but I'm afraid to change it
     # to use eventtracker.emit(). So I'm just going to do this when the event we care about
     # from problem-builder comes through.
-    if "eventtype" in event and event['eventtype'] == "xblock.problem_builder.submitted":
+    if "event_type" in event and event['event_type'] == "xblock.problem_builder.submitted":
         eventtracker.emit(event['eventtype'], event)
         return
 

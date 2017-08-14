@@ -21,6 +21,17 @@ from eventtracking import tracker as eventtracker
 
 def log_event(event):
     """Capture a event by sending it to the register trackers"""
+
+    # iBio :
+    # we need problem-builder events to be handled by our custom event-tracker
+    # so that they can be sent to AWS Lambda. I don't know why this log_event method
+    # doesn't use eventracking, rather than local tracking, but I'm afraid to change it
+    # to use eventtracker.emit(). So I'm just going to do this when the event we care about
+    # from problem-builder comes through.
+    if event.hasattr("eventtype") and event['eventtype'] == "xblock.problem_builder.submitted":
+        eventtracker.emit(event['eventtype'], event)
+        return
+
     tracker.send(event)
 
 

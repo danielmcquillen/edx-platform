@@ -65,6 +65,10 @@ class UserReadOnlySerializer(serializers.Serializer):
     def to_representation(self, user):
         """
         Overwrite to_native to handle custom logic since we are serializing two models as one here
+
+        iBio note: now that we're including ExtraInfo, we actually
+                   serializing *three* models
+
         :param user: User object
         :return: Dict serialized account
         """

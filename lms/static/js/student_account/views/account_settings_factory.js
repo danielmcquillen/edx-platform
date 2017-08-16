@@ -30,11 +30,12 @@
             userPreferencesModel = new UserPreferencesModel();
             userPreferencesModel.url = userPreferencesApiUrl;
 
-            // iBio : hiding second and third tabs, so modify message to match      subtitle: gettext('These settings include basic information about your account. You can also specify additional information and see your linked social accounts on this page.'),  // eslint-disable-line max-len
 
             aboutSectionsData = [
                 {
                     title: gettext('Basic Account Information'),
+                    // iBio : hiding second and third tabs, so modify message to match
+                    // subtitle: gettext('These settings include basic information about your account. You can also specify additional information and see your linked social accounts on this page.'),  // eslint-disable-line max-len
                     subtitle: gettext('These settings include basic information about your account.'),  // eslint-disable-line max-len
                     fields: [
                         {
@@ -155,7 +156,7 @@
                                 title: gettext('Gender Description'),
                                 valueAttribute: 'gender_description',
                                 helpMessage: gettext(
-                                    'If none of the gender options above apply to you, please describe your gender '  // eslint-disable-line max-len
+                                    'If none of the gender options apply to you, please describe your gender '  // eslint-disable-line max-len
                                 ),
                                 persistChanges: true
                             })

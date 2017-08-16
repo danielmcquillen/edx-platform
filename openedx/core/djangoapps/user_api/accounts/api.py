@@ -30,7 +30,7 @@ from . import (
     USERNAME_MIN_LENGTH, USERNAME_MAX_LENGTH
 )
 from .serializers import (
-    AccountLegacyProfileSerializer, AccountUserSerializer,
+    AccountLegacyProfileSerializer, AccountUserSerializer, ExtraInfoSerializer,
     UserReadOnlySerializer, _visible_fields  # pylint: disable=invalid-name
 )
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
@@ -161,8 +161,11 @@ def update_account_settings(requesting_user, update, username=None):
 
     user_serializer = AccountUserSerializer(existing_user, data=update)
     legacy_profile_serializer = AccountLegacyProfileSerializer(existing_user_profile, data=update)
+    extrainfo_serializer = None
+    if hasattr(requesting_user, "extrainfo"):
+        extrainfo_serializer = ExtraInfoSerializer(requesting_user.extrainfo, data=update)
 
-    for serializer in user_serializer, legacy_profile_serializer:
+    for serializer in user_serializer, legacy_profile_serializer, extrainfo_serializer:
         field_errors = add_serializer_errors(serializer, update, field_errors)
 
     # If the user asked to change email, validate it.
@@ -187,7 +190,7 @@ def update_account_settings(requesting_user, update, username=None):
         if "language_proficiencies" in update:
             old_language_proficiencies = legacy_profile_serializer.data["language_proficiencies"]
 
-        for serializer in user_serializer, legacy_profile_serializer:
+        for serializer in user_serializer, legacy_profile_serializer, extrainfo_serializer:
             serializer.save()
 
         # if any exception is raised for user preference (i.e. account_privacy), the entire transaction for user account

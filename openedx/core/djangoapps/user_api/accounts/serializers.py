@@ -3,6 +3,7 @@ Django REST Framework serializers for the User API Accounts sub-application
 """
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from ibio_custom_reg_form.models import ExtraInfo
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
@@ -15,6 +16,10 @@ from openedx.core.djangoapps.user_api.models import UserPreference
 from openedx.core.djangoapps.user_api.serializers import ReadOnlyFieldsSerializerMixin
 from student.models import UserProfile, LanguageProficiency
 from .image_helpers import get_profile_image_urls_for_user
+from logging import getLogger
+
+
+logger = getLogger(__name__)
 
 
 PROFILE_IMAGE_KEY_PREFIX = 'image_url'
@@ -66,6 +71,15 @@ class UserReadOnlySerializer(serializers.Serializer):
         profile = user.profile
         accomplishments_shared = badges_enabled()
 
+        # iBio: Adding in a specific property for gender_description so we
+        # can update it on the Account page
+
+        try:
+            gender_description = user.extrainfo.gender_description
+        except Exception as e:
+            logger.exception("Couldn't load gender_description")
+            gender_description = ""
+
         data = {
             "username": user.username,
             "url": self.context.get('request').build_absolute_uri(
@@ -91,6 +105,7 @@ class UserReadOnlySerializer(serializers.Serializer):
             ).data,
             "name": profile.name,
             "gender": AccountLegacyProfileSerializer.convert_empty_to_None(profile.gender),
+            "gender_description": gender_description,
             "goals": profile.goals,
             "year_of_birth": profile.year_of_birth,
             "level_of_education": AccountLegacyProfileSerializer.convert_empty_to_None(profile.level_of_education),
@@ -104,6 +119,9 @@ class UserReadOnlySerializer(serializers.Serializer):
             fields = self.custom_fields
         else:
             fields = _visible_fields(profile, user, self.configuration)
+
+        # iBio: apppend gender_description
+        fields.append('gender_description')
 
         return self._filter_fields(
             fields,
@@ -120,6 +138,17 @@ class UserReadOnlySerializer(serializers.Serializer):
             visible_serialized_account[field_name] = serialized_account.get(field_name, None)
 
         return visible_serialized_account
+
+
+class ExtraInfoSerializer(serializers.ModelSerializer):
+    """
+    Class that serializes the "ExtraInfo" portion of User model
+    """
+    class Meta(object):
+        model = ExtraInfo
+        fields = ("gender_description",)
+        read_only_fields = ()
+        explicit_read_only_fields = ()
 
 
 class AccountUserSerializer(serializers.HyperlinkedModelSerializer, ReadOnlyFieldsSerializerMixin):

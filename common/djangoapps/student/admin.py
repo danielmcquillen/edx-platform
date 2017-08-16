@@ -161,8 +161,9 @@ class UserProfileInline(admin.StackedInline):
     can_delete = False
     verbose_name_plural = _('User profile')
 
-from ibio_custom_reg_form.models import ExtraInfo
 
+# iBio: Add inline admin for ExtraInfo
+from ibio_custom_reg_form.models import ExtraInfo
 class ExtraInfoInline(admin.StackedInline):
     """ Inline admin interface for ExtraInfo model. """
     model = ExtraInfo
@@ -172,6 +173,7 @@ class ExtraInfoInline(admin.StackedInline):
 
 class UserAdmin(BaseUserAdmin):
     """ Admin interface for the User model. """
+    # iBio: Add ExtaInfoInline so we can see user's custom fields
     inlines = (UserProfileInline, ExtraInfoInline)
 
 

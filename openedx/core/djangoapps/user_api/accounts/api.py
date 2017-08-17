@@ -35,6 +35,11 @@ from .serializers import (
 )
 from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 
+# iBio: some extra imports
+from ibio_custom_reg_form.models import ExtraInfo
+from logging import getLogger
+
+log = getLogger(__name__)
 
 # Public access point for this function.
 visible_fields = _visible_fields
@@ -161,11 +166,17 @@ def update_account_settings(requesting_user, update, username=None):
 
     user_serializer = AccountUserSerializer(existing_user, data=update)
     legacy_profile_serializer = AccountLegacyProfileSerializer(existing_user_profile, data=update)
-    extrainfo_serializer = None
-    if hasattr(requesting_user, "extrainfo"):
-        extrainfo_serializer = ExtraInfoSerializer(requesting_user.extrainfo, data=update)
 
-    for serializer in user_serializer, legacy_profile_serializer, extrainfo_serializer:
+    serializers = [user_serializer, legacy_profile_serializer]
+
+    # iBio: Try to create our new serializer,
+    try:
+        extrainfo_serializer = ExtraInfoSerializer(requesting_user.extrainfo, data=update)
+        serializers.append(extrainfo_serializer)
+    except Exception as e:
+        log.exception("Couldn't create ExtraInfo Serializer: {}".format(e))
+
+    for serializer in serializers:
         field_errors = add_serializer_errors(serializer, update, field_errors)
 
     # If the user asked to change email, validate it.
@@ -190,7 +201,7 @@ def update_account_settings(requesting_user, update, username=None):
         if "language_proficiencies" in update:
             old_language_proficiencies = legacy_profile_serializer.data["language_proficiencies"]
 
-        for serializer in user_serializer, legacy_profile_serializer, extrainfo_serializer:
+        for serializer in serializers:
             serializer.save()
 
         # if any exception is raised for user preference (i.e. account_privacy), the entire transaction for user account

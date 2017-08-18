@@ -81,6 +81,9 @@ git+https://github.com/edx/XBlock.git@xblock-0.4.13#egg=XBlock==0.4.13
 # Exta field for iBio User Registration
 -e git+https://github.com/danielmcquillen/ibio-custom-form-app.git@master#egg=ibio-custom-form-app==1.0.16
 
+# iBio problem-builder for MRP assessments
+-e git+https://github.com/danielmcquillen/problem-builder.git@v2.6.10#egg=xblock-problem-builder==2.6.10
+
 
 -e git+https://github.com/edx/django-splash.git@v0.2#egg=django-splash==0.2
 -e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock

@@ -185,7 +185,7 @@ def ibio_speaker(request, slug):
     try:
         return render_to_response('static_templates/ibio-speakers/' + slug +'.html', {'ibio_speaker': speaker})
     except TopLevelLookupException:
-    e    raise Http404
+        raise Http404
 
 
 @ensure_csrf_cookie

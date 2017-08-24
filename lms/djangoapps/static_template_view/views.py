@@ -155,6 +155,7 @@ def ibio_speakers(request):
     except TopLevelLookupException:
         raise Http404
 
+
 @ensure_csrf_cookie
 @cache_if_anonymous()
 def ibio_testimonials(request):
@@ -178,13 +179,13 @@ def ibio_speaker(request, slug):
     """
     speaker = next((x for x in ibio_speaker_arr if x['speaker_slug'] == slug), None)
 
-    #if not speaker:
-    #    raise Http404
+    if not speaker:
+        raise Http404
 
-    #try:
-    return render_to_response('static_templates/ibio-speakers/' + slug +'.html', {'ibio_speaker': speaker})
-    #except TopLevelLookupException:
-    #    raise Http404
+    try:
+        return render_to_response('static_templates/ibio-speakers/' + slug +'.html', {'ibio_speaker': speaker})
+    except TopLevelLookupException:
+    e    raise Http404
 
 
 @ensure_csrf_cookie

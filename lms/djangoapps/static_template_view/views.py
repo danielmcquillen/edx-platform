@@ -151,7 +151,15 @@ def index(request, template):
 @cache_if_anonymous()
 def ibio_speakers(request):
     try:
-        return render_to_response('static_templates/ibio_speakers.html', {'ibio_speaker_arr': ibio_speaker_arr})
+        return render_to_response('static_templates/ibio-speakers.html', {'ibio_speaker_arr': ibio_speaker_arr})
+    except TopLevelLookupException:
+        raise Http404
+
+@ensure_csrf_cookie
+@cache_if_anonymous()
+def ibio_testimonials(request):
+    try:
+        return render_to_response('static_templates/ibio-testimonials.html', {})
     except TopLevelLookupException:
         raise Http404
 

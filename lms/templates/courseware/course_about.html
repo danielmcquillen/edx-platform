@@ -302,67 +302,8 @@ from openedx.core.lib.courses import course_image_url
 
           ##<li class="important-dates-item"><span class="icon fa fa-clock-o" aria-hidden="true"></span><p class="important-dates-item-title">${_('Course Length')}</p><span class="important-dates-item-text course-length">${_('{number} weeks').format(number=15)}</span></li>
 
-					<h2>${course.id | u}</h2>
-					<h2>${course.display_number_with_default | h}</h2>
-	        % if course.display_number_with_default == "iBio1" :
 
-						<style>
 
-						  .about-testimonials {
-
-						  }
-
-						  .about-testimonial  {
-						    margin: 20px;
-						    padding: 20px;
-						    border-radius: 5px;
-						  }
-
-						  .about-testimonial-quote {
-						    margin-bottom: 5px;
-						  }
-
-						  .about-testimonial-source {
-						    margin-top:0px;
-						    font-style: italic;
-						    margin-bottom: 0px;
-						  }
-
-						</style>
-
-						<br/><br/>
-						<header>Testimonials</header>
-
-	          <div class="about-testimonials">
-
-			        <div class="about-testimonial">
-				        <p class="about-testimonial-quote">“I loved this course so much. Thank you for the opportunity to learn from so many wise scientists in a fun, easy to use, yet challenging and stimulating way.”</p>
-				        <p class="about-testimonial-source">-Graduate student</p>
-			        </div>
-
-			        <div class="about-testimonial">
-				        <p class="about-testimonial-quote">“I wish I had this course as a beginning graduate student. I will definitely use all concepts in training my students in the future.”</p>
-				        <p class="about-testimonial-source">-Postdoc</p>
-			        </div>
-
-			        <div class="about-testimonial">
-				        <p class="about-testimonial-quote">“It has given me a sense of control over what I am getting into (I am starting grad school this fall as a PhD student)...I feel more confident about grad school now because of this course.”</p>
-				        <p class="about-testimonial-source">-Undergraduate student</p>
-			        </div>
-
-			        <div class="about-testimonial">
-				        <p class="about-testimonial-quote">“Great course!! Seriously this has vastly better prepared me for a career in academia than any other single course I've taken.”</p>
-				        <p class="about-testimonial-source">-Graduate student</p>
-			        </div>
-
-			        <div class="about-testimonial">
-				        <p class="about-testimonial-quote">“I usually do not like online courses, but I found myself very engaged in these lessons and really enjoyed watching the videos. Great professionals were chosen for this!”
-				        <p class="about-testimonial-source">-Graduate student</p>
-			        </div>
-
-		        </div>
-
-          % endif
 
           %if course_price and (can_add_course_to_cart or is_cosmetic_price_enabled):
             <li class="important-dates-item">
@@ -415,6 +356,66 @@ from openedx.core.lib.courses import course_image_url
         </div>
     </div>
       %endif
+
+
+	    <style>
+
+			  .about-testimonials {
+
+			  }
+
+			  .about-testimonial  {
+			    margin: 20px;
+			    padding: 20px;
+			    border-radius: 5px;
+			  }
+
+			  .about-testimonial-quote {
+			    margin-bottom: 5px;
+			  }
+
+			  .about-testimonial-source {
+			    margin-top:0px;
+			    font-style: italic;
+			    margin-bottom: 0px;
+			  }
+
+	    </style>
+
+
+	     <div class="about-testimonials">
+
+						<header><h1>${_("Testimonials"}</h1></header>
+
+
+			        <div class="about-testimonial">
+				        <p class="about-testimonial-quote">“I loved this course so much. Thank you for the opportunity to learn from so many wise scientists in a fun, easy to use, yet challenging and stimulating way.”</p>
+				        <p class="about-testimonial-source">-Graduate student</p>
+			        </div>
+
+			        <div class="about-testimonial">
+				        <p class="about-testimonial-quote">“I wish I had this course as a beginning graduate student. I will definitely use all concepts in training my students in the future.”</p>
+				        <p class="about-testimonial-source">-Postdoc</p>
+			        </div>
+
+			        <div class="about-testimonial">
+				        <p class="about-testimonial-quote">“It has given me a sense of control over what I am getting into (I am starting grad school this fall as a PhD student)...I feel more confident about grad school now because of this course.”</p>
+				        <p class="about-testimonial-source">-Undergraduate student</p>
+			        </div>
+
+			        <div class="about-testimonial">
+				        <p class="about-testimonial-quote">“Great course!! Seriously this has vastly better prepared me for a career in academia than any other single course I've taken.”</p>
+				        <p class="about-testimonial-source">-Graduate student</p>
+			        </div>
+
+			        <div class="about-testimonial">
+				        <p class="about-testimonial-quote">“I usually do not like online courses, but I found myself very engaged in these lessons and really enjoyed watching the videos. Great professionals were chosen for this!”
+				        <p class="about-testimonial-source">-Graduate student</p>
+			        </div>
+
+	     </div> <!-- ./about-testimonials -->
+
+
 
   </div>
 

@@ -156,11 +156,6 @@ def ibio_speakers(request):
         raise Http404
 
 
-@ensure_csrf_cookie
-@cache_if_anonymous()
-def ibio_testimonials(request):
-    return render_to_response('static_templates/ibio-testimonials.html', {})
-
 
 @ensure_csrf_cookie
 @cache_if_anonymous()

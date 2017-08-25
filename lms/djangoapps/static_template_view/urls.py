@@ -9,7 +9,7 @@ urlpatterns = (
     'static_template_view.views',
 
     # iBio: our marketing pages
-    url(r'^ibio-testimonials$', 'ibio_testimonials', name="ibio-testimonials"),
+    url(r'^testimonials$', 'render', {'template': 'ibio-testimonials'}, name="testimonials"),
     url(r'^speakers$', 'ibio_speakers', name="speakers"),
     url(r'^speakers/([_a-zA-Z0-9-]+)$', 'ibio_speaker', name="speaker"),
 

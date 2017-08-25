@@ -243,6 +243,7 @@ from openedx.core.lib.courses import course_image_url
   </div>
 
     <div class="course-sidebar">
+
       <div class="course-summary">
 
         <%include file="course_about_sidebar_header.html" />
@@ -335,28 +336,6 @@ from openedx.core.lib.courses import course_image_url
         </ol>
     </div>
 
-      ## CourseTalk widget
-      % if show_coursetalk_widget:
-      <div class="coursetalk-read-reviews">
-          <div id="ct-custom-read-review-widget" data-provider="${platform_key}" data-course="${course_review_key}"></div>
-      </div>
-      % endif
-
-      ## For now, ocw links are the only thing that goes in additional resources
-      % if get_course_about_section(request, course, "ocw_links"):
-      <div class="additional-resources">
-        <header>
-          <h1>${_("Additional Resources")}</h1>
-      </div>
-
-        <div>
-          ## "MITOpenCourseware" should *not* be translated
-          <h2 class="opencourseware">MITOpenCourseware</h2>
-             ${get_course_about_section(request, course, "ocw_links")}
-        </div>
-    </div>
-      %endif
-
 
 	    <style>
 
@@ -414,6 +393,30 @@ from openedx.core.lib.courses import course_image_url
 			        </div>
 
 	     </div> <!-- ./about-testimonials -->
+
+      ## CourseTalk widget
+      % if show_coursetalk_widget:
+      <div class="coursetalk-read-reviews">
+          <div id="ct-custom-read-review-widget" data-provider="${platform_key}" data-course="${course_review_key}"></div>
+      </div>
+      % endif
+
+      ## For now, ocw links are the only thing that goes in additional resources
+      % if get_course_about_section(request, course, "ocw_links"):
+      <div class="additional-resources">
+        <header>
+          <h1>${_("Additional Resources")}</h1>
+      </div>
+
+        <div>
+          ## "MITOpenCourseware" should *not* be translated
+          <h2 class="opencourseware">MITOpenCourseware</h2>
+             ${get_course_about_section(request, course, "ocw_links")}
+        </div>
+    </div>
+      %endif
+
+
 
 
 

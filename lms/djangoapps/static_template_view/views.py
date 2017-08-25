@@ -159,10 +159,7 @@ def ibio_speakers(request):
 @ensure_csrf_cookie
 @cache_if_anonymous()
 def ibio_testimonials(request):
-    try:
-        return render_to_response('static_templates/ibio-testimonials.html', {})
-    except TopLevelLookupException:
-        raise Http404
+    return render_to_response('static_templates/ibio-testimonials.html', {})
 
 
 @ensure_csrf_cookie

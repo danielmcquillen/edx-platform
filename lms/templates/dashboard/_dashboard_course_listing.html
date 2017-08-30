@@ -121,7 +121,10 @@ from student.helpers import (
             endif
           %>
 
-                % if isinstance(course_date, str):
+	              ## iBio: We want advertised start to show if defined.
+	              % if course_overview.advertised_start:
+                     <span class="info-date-block" data-tooltip="Hi">${course_overview.advertised_start}</span>
+                % elif isinstance(course_date, str):
                     <span class="info-date-block" data-tooltip="Hi">${_(container_string).format(date=course_date)}</span>
                 % elif course_date is not None:
                     <%

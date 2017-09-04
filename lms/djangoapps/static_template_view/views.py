@@ -24,7 +24,7 @@ ibio_speaker_arr = [
 
     {
         "name": "Uri Alon",
-        "videoURL": "https://www.youtube.com/embed/TI_7gUB9mSI",
+        "videoURL": "https://youtube.com/embed/1nDOrWetd6s",
         "speaker_slug": "uri-alon",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular Cell Biology",
@@ -32,7 +32,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Angela DePace",
-        "videoURL": "https://www.youtube.com/embed/QS-Gocu4hOw",
+        "videoURL": "https://youtu.com/embed/_pZl7pofC9s",
         "speaker_slug": "angela-depace",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
@@ -40,7 +40,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Tejal Desai",
-        "videoURL": "https://www.youtube.com/embed/iFy78gK0gDU",
+        "videoURL": "https://youtu.com/embed/XD2IxKd1PT0",
         "speaker_slug": "tejal-desai",
         "suffix": "Ph.D.",
         "title": "Professor, Bioengineering and Therapeutic Sciences",
@@ -48,7 +48,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Cynthia Fuhrmann",
-        "videoURL": "https://www.youtube.com/embed/HHObjwfyJ0k",
+        "videoURL": "https://youtube.com/embed/JfYTL0LLhlQ",
         "speaker_slug": "cynthia-fuhrmann",
         "suffix": "Ph.D.",
         "title": "Assistant Dean for Career and Professional Development; Director, Center for Biomedical Career Development",
@@ -56,7 +56,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ryan Hernandez",
-        "videoURL": "https://www.youtube.com/embed/aSuuaDecIjE",
+        "videoURL": "https://www.youtube.com/embed/kqZSbLBpcRQ",
         "speaker_slug": "ryan-hernandez",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
@@ -65,7 +65,7 @@ ibio_speaker_arr = [
 
     {
         "name": "Asia Matthew-Onabanjo",
-        "videoURL": "https://www.youtube.com/embed/gI_JRiu4Qic",
+        "videoURL": "https://www.youtube.com/embed/SWzZHnG-4rU",
         "speaker_slug": "asia-matthew-onabanjo",
         "suffix": "M.D./Ph.D. Candidate",
         "title": "Leslie Shaw Lab",
@@ -73,7 +73,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Kassandra Ori-McKenney",
-        "videoURL": "https://www.youtube.com/embed/4uOjlWdRc2k",
+        "videoURL": "https://www.youtube.com/embed/i-KvrBpW-2A",
         "speaker_slug": "kassie-ori-mckenney",
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular & Cellular Biology",
@@ -81,7 +81,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Sabine Petry",
-        "videoURL": "https://www.youtube.com/embed/P-cMmO8tSz4",
+        "videoURL": "https://www.youtube.com/embed/kkK6_Akv9cw",
         "speaker_slug": "sabine-petry",
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular Biology ",
@@ -89,7 +89,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Indira Raman",
-        "videoURL": "https://www.youtube.com/embed/pulwjB08EWg",
+        "videoURL": "https://www.youtube.com/embed/P0aWoY_FBOM",
         "speaker_slug": "indira-raman",
         "suffix": "Ph.D.",
         "title": "Professor, Neurobiology",
@@ -97,7 +97,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Randy Schekman",
-        "videoURL": "https://www.youtube.com/embed/4_EIslN-qH0",
+        "videoURL": "https://www.youtube.com/embed/gdioxba2uXw",
         "speaker_slug": "randy-schekman",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular & Cellular Biology; HHMI Investigator",
@@ -105,7 +105,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Clarissa Scholes",
-        "videoURL": "https://www.youtube.com/embed/51ddaad5qIk",
+        "videoURL": "https://www.youtube.com/embed/JKY3nxYOGLU",
         "speaker_slug": "clarissa-scholes",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
@@ -113,7 +113,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ben Vincent",
-        "videoURL": "https://www.youtube.com/embed/PZJdCPU4_g8",
+        "videoURL": "https://www.youtube.com/embed/rDGZkhlMRec",
         "speaker_slug": "ben-vincent",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
@@ -121,7 +121,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Keith Yamamoto",
-        "videoURL": "https://www.youtube.com/embed/0XlyTiGO794",
+        "videoURL": "https://www.youtube.com/embed/U3eN-SzdgKI",
         "speaker_slug": "keith-yamamoto",
         "suffix": "Ph.D.",
         "title": "Professor, Cellular & Molecular Pharmacology; Vice Chancellor for Science Policy and Strategy",

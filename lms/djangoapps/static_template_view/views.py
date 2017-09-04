@@ -32,7 +32,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Angela DePace",
-        "videoURL": "https://youtu.com/embed/_pZl7pofC9s",
+        "videoURL": "https://youtube.com/embed/_pZl7pofC9s",
         "speaker_slug": "angela-depace",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
@@ -40,7 +40,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Tejal Desai",
-        "videoURL": "https://youtu.com/embed/XD2IxKd1PT0",
+        "videoURL": "https://youtube.com/embed/XD2IxKd1PT0",
         "speaker_slug": "tejal-desai",
         "suffix": "Ph.D.",
         "title": "Professor, Bioengineering and Therapeutic Sciences",

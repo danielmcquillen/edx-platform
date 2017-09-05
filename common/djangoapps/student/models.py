@@ -281,7 +281,7 @@ class UserProfile(models.Model):
         ('e', ugettext_noop("Early career faculty member (pre-tenure)")),
         ('n', ugettext_noop("Non-tenure track faculty member")),
         ('t', ugettext_noop("Tenured faculty")),
-        ('r', ugettext_noop("Researcher/staff scientist")),
+        ('rss', ugettext_noop("Researcher/staff scientist")),
         ('a', ugettext_noop("Administrator")),
         ('s', ugettext_noop("Professional development/career development staff")),
         ('o', ugettext_noop("Other"))

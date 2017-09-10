@@ -155,6 +155,15 @@ def ibio_speakers(request):
     except TopLevelLookupException:
         raise Http404
 
+@ensure_csrf_cookie
+@cache_if_anonymous()
+def ibio_newsletter_signup_complete(request):
+    try:
+        return render_to_response('static_templates/ibio-newsletter-signup-complete.html', {})
+    except TopLevelLookupException:
+        raise Http404
+
+
 
 
 @ensure_csrf_cookie

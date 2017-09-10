@@ -12,6 +12,7 @@ urlpatterns = (
     url(r'^testimonials$', 'render', {'template': 'ibio-testimonials.html'}, name="testimonials"),
     url(r'^speakers$', 'ibio_speakers', name="speakers"),
     url(r'^speakers/([_a-zA-Z0-9-]+)$', 'ibio_speaker', name="speaker"),
+    url(r'^ibio-newsletter-signup-complete$', 'ibio_newsletter_signup_complete', name="ibio_newsletter_signup_complete"),
 
     # TODO: Is this used anymore? What is STATIC_GRAB?
     url(r'^t/(?P<template>[^/]*)$', 'index'),

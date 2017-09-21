@@ -163,6 +163,14 @@ def ibio_newsletter_signup_complete(request):
     except TopLevelLookupException:
         raise Http404
 
+@ensure_csrf_cookie
+@cache_if_anonymous()
+def ibio_trainer_info(request):
+    try:
+        return render_to_response('static_templates/ibio-trainer-info.html', {})
+    except TopLevelLookupException:
+        raise Http404
+
 
 
 

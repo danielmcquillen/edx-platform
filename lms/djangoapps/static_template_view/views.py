@@ -60,7 +60,7 @@ ibio_speaker_arr = [
         "speaker_slug": "ryan-hernandez",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
-        "university": "Harvard Medical School"
+        "university": "University of California, San Francisco"
     },
 
     {

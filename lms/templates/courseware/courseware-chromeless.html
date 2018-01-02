@@ -21,6 +21,18 @@ ${static.get_page_title_breadcrumbs(course_name())}
     %endif
 </title></%block>
 
+<!-- iBio: Hack to get our MRP review page to render correctly.
+           We want textareas to grow automatically to height of
+           parent iframe.
+-->
+<style>
+
+	.xblock-mentoring_view textarea {
+		height: calc(100vh - 200px) !important;
+	}
+
+</style>
+
 <%block name="header_extras">
 % for template_name in ["image-modal"]:
 <script type="text/template" id="${template_name}-tpl">

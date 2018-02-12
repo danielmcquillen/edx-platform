@@ -181,13 +181,14 @@ from django.utils.http import urlquote_plus
                                         </p>
                                         %if len(section.scores) > 0:
                                         <dl class="scores">
-	                                          %#iBio: we only want to show Problem Scores, not Practice Scores. Showing both is confusing in combination for how we're repeating MRP xblocks.
-		                                          %if section.graded:
-		                                            <dt class="hd hd-6">${ _("Problem Scores: ")</dt>
-		                                            %for score in section.scores:
-		                                            <dd>${"{0:.3n}/{1:.3n}".format(float(score.earned),float(score.possible))}</dd>
-		                                            %endfor
-                                              %endif
+	                                          <!-- iBio: we only want to show Problem Scores, not Practice Scores. Showing both is confusing in combination for how we're repeating MRP xblocks. -->
+	                                          %if section.graded:
+	                                            <dt class="hd hd-6">${ _("Problem Scores: ") if section.graded else _("Practice Scores: ")}</dt>
+	                                            %for score in section.scores:
+	                                            <dd>${"{0:.3n}/{1:.3n}".format(float(score.earned),float(score.possible))}</dd>
+	                                            %endfor
+
+                                            %endif
                                         </dl>
                                         %else:
                                         <p class="no-scores">${_("No problem scores in this section")}</p>

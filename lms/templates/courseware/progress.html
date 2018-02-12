@@ -163,14 +163,13 @@ from django.utils.http import urlquote_plus
                                                 ${ section.display_name}
 																						<!-- iBio: Only showing grades if this subsection is graded -->
                                                 %if section.graded and (total > 0 or earned > 0):
-		                                                <span class="sr">
-		                                                    ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total)))}
-		                                                </span>
-																									%endif
+	                                                <span class="sr">
+	                                                    ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total)))}
+	                                                </span>
                                                 %endif
                                             </a>
 
-                                            %if section.graded and total > 0 or earned > 0:
+                                            %if section.graded and (total > 0 or earned > 0):
                                             <span> ${"({0:.3n}/{1:.3n}) {2}".format( float(earned), float(total), percentageString )}</span>
                                             %endif
                                         </h5>

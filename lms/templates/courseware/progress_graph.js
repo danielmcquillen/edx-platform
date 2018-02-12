@@ -44,7 +44,9 @@ $(function () {
   #       don't imply success or fail'
   #colors = ["#b72121", "#600101", "#666666", "#333333"]
 
-  colors = ["#B4DDCC", "#8CCDCD", "#66BED1", "#4BAACC", "#4192BC", "#3878AC", "#305F9C", "#26468C", "#1D2E7D"]
+  #colors = ["#B4DDCC", "#8CCDCD", "#66BED1", "#4BAACC", "#4192BC", "#3878AC", "#305F9C", "#26468C", "#1D2E7D"]
+  colors = ["#1D2E7D", "#26468C" , "#305F9C" , "#3878AC" , "#4192BC", "#4BAACC", "#66BED1", "#8CCDCD", "#B4DDCC"]
+
   categories = {}
 
   tickIndex = 1

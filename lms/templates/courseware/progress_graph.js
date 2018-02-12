@@ -39,7 +39,12 @@ $(function () {
   /* -------------------------------- Grade detail bars -------------------------------- */
     
   <%
-  colors = ["#b72121", "#600101", "#666666", "#333333"]
+
+  #iBio : Setting out own colors for progress...more neutral hues that
+  #       don't imply success or fail'
+  #colors = ["#b72121", "#600101", "#666666", "#333333"]
+
+  colors = ["#B4DDCC", "#8CCDCD", "#66BED1", "#4BAACC", "#4192BC", "#3878AC", "#305F9C", "#26468C", "#1D2E7D"]
   categories = {}
 
   tickIndex = 1

@@ -161,10 +161,12 @@ from django.utils.http import urlquote_plus
                                         <h5 class="hd hd-5">
                                             <a href="${reverse('courseware_section', kwargs=dict(course_id=course.id.to_deprecated_string(), chapter=chapter['url_name'], section=section.url_name))}">
                                                 ${ section.display_name}
-                                                %if section.graded && (total > 0 or earned > 0):
-                                                <span class="sr">
-                                                    ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total)))}
-                                                </span>
+                                                %if section.graded:
+																									%if (total > 0 or earned > 0):
+		                                                <span class="sr">
+		                                                    ${_("{earned} of {total} possible points").format(earned='{:.3n}'.format(float(earned)), total='{:.3n}'.format(float(total)))}
+		                                                </span>
+																									%endif
                                                 %endif
                                             </a>
                                             %if total > 0 or earned > 0:

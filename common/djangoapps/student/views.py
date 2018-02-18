@@ -1790,9 +1790,9 @@ def create_account_with_params(request, params):
             # Mailchimp requires the age & yearOfBirth to be integers, we send a sane integer default if falsey.
             'age': profile.age or -1,
             'yearOfBirth': profile.year_of_birth or datetime.datetime.now(UTC).year,
-            'education': profile.level_of_education_display,
+            'education': profile.level_of_education,
             'address': profile.mailing_address,
-            'gender': profile.gender_display,
+            'gender': profile.gender,
             'country': unicode(profile.country),
         }
     ]

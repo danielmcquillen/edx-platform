@@ -131,8 +131,10 @@ LMS_ROOT_URL = ENV_TOKENS.get('LMS_ROOT_URL')
 SITE_NAME = ENV_TOKENS['SITE_NAME']
 
 ALLOWED_HOSTS = [
-    # TODO: bbeggs remove this before prod, temp fix to get load testing running
-    "*",
+    "10.0.0.41",
+    "127.0.0.1",
+    "localhost",
+    ".ibiology.org",
     ENV_TOKENS.get('CMS_BASE')
 ]
 

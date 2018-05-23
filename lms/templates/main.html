@@ -107,7 +107,7 @@ from pipeline_mako import render_require_js_path_overrides
 
 <!-- iBio -- GTM part 1 -->
 <% gt_acct = static.get_value("GOOGLE_TAG_MANAGER_ACCOUNT", settings.GOOGLE_TAG_MANAGER_ACCOUNT) %>
-% if gt_acct:
+% if gt_acct = "never":
 
 	<!-- Google Tag Manager -->
 	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

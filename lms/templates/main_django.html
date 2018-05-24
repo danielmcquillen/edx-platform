@@ -24,9 +24,37 @@
     {% optional_include "head-extra.html"|microsite_template_path %}
 
     <meta name="path_prefix" content="{{EDX_ROOT_URL}}">
+
+    <!-- iBio -- GTM part 1 -->
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5ZGWVJ');</script>
+    <!-- End Google Tag Manager -->
+
 </head>
 
 <body class="{% block bodyclass %}{% endblock %} lang_{{LANGUAGE_CODE}}">
+
+<!-- iBio -- GTM part 2 -->
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZGWVJ"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
 <div class="window-wrap" dir="{{LANGUAGE_BIDI|yesno:'rtl,ltr'}}">
     <a class="nav-skip" href="#main">{% trans "Skip to main content" %}</a>
     {% with course=request.course %}
@@ -45,6 +73,56 @@
 {% javascript 'base_application' %}
 
 {% render_block "js" %}
+
+
+<!-- Cookie Control V8 -->
+<script src="https://cc.cdn.civiccomputing.com/8.0/cookieControl-8.0.min.js"></script>
+<script>
+    var config = {
+        apiKey: 'fc4811476d42fcc43696a05a209ed6e317db62b2',
+        product: 'PRO',
+        logConsent: true,
+         text : {
+            title: 'This site uses cookies.',
+            intro:  'Some of these cookies are essential, while others help us to improve your experience by providing insights into how the site is being used.',
+            necessaryTitle : 'Necessary Cookies',
+            necessaryDescription : 'Necessary cookies enable core functionality. The website cannot function properly without these cookies, and can only be disabled by changing your browser preferences.',
+            thirdPartyTitle : 'Warning: Some cookies require your attention',
+            thirdPartyDescription : 'Consent for the following cookies could not be automatically revoked. Please follow the link(s) below to opt out manually.'
+          },
+          statement : {
+            description: 'For more information vist our',
+            name : 'Privacy Policy',
+            url: 'https://courses.ibiology.org/privacy',
+            updated : '22/10/2017'
+          },
+        necessaryCookies: ['sessionid', 'csrftoken', 'edx-user-info','edxloggedin', 'shared-csrftoken', 'lastimportupload', 'lastexport'],
+        optionalCookies: [
+            {
+                    name: 'analytics',
+                    label: 'Analytics',
+                    description: 'Analytical cookies help us to improve our website by collecting and reporting information on its usage.',
+                    cookies: ['_ga', '_gid', '_gat', '__utma', '__utmt', '__utmb', '__utmc', '__utmz', '__utmv', 'ac_enable_tracking'],
+                    initialConsentState: 'on',
+                    onAccept : function(){
+                      /* Tell GTM to enable Google Analytics and ActiveCampaign */
+                      dataLayer.push({'event': 'ibio_courses_analytics_consent'});
+                    },
+                    onRevoke: function(){}
+                }
+        ],
+        position: 'RIGHT',
+        theme: 'LIGHT',
+        initialState: 'notify',
+        text: {
+
+        }
+    };
+    CookieControl.load( config );
+</script>
+
+
+
 </body>
 
 <!-- ActiveCampaign -->

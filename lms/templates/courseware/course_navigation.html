@@ -28,7 +28,6 @@ staff_selected = selected(not masquerade or masquerade.role != "student")
 specific_student_selected = selected(not staff_selected and masquerade.user_name)
 student_selected = selected(not staff_selected and not specific_student_selected and not masquerade_group_id)
 include_special_exams = settings.FEATURES.get('ENABLE_SPECIAL_EXAMS', False) and (course.enable_proctored_exams or course.enable_timed_exams)
-show_mep_link = course.display_number_with_default == "LE"
 %>
 
 % if include_special_exams:
@@ -96,7 +95,7 @@ show_mep_link = course.display_number_with_default == "LE"
             args="tab_list=tab_list,active_page=active_page,default_tab=default_tab,tab_image=tab_image" />
             <%block name="extratabs" />
 
-            % if show_mep_link
+            % if course.display_number_with_default == "LE"
             <li style=" position: relative;top: 10px;">
                 <a style="display:flex; font-size: .8rem; padding: 0; margin:0;"
                    href="https://courses.ibiology.org/courses/course-v1:iBiology+LE+2019/courseware/0739b306fa004fc1893d4c21f585183b/2fc7889152d8431faaf031fe08b82816/">

@@ -83,18 +83,18 @@ is_LE_2019 = str(course.id)=='course-v1:iBiology+LE+2019'
 % endif
 
 % if disable_tabs is UNDEFINED or not disable_tabs:
-    <nav class="${active_page} wrapper-course-material" aria-label="${_('Course Material')}">
-        <div class="course-material">
+    <nav class="${active_page} wrapper-course-material" style="display:flex; flex-direction: row"  aria-label="${_('Course Material')}">
+        <div class="course-material" style="width:inherit">
             <%
             tab_list = get_course_tab_list(request, course)
             tabs_tmpl = static.get_template_path('/courseware/tabs.html')
             %>
-            <ol class="tabs course-tabs">
+            <ol class="tabs course-tabs" style="display:flex;">
                 <%include file="${tabs_tmpl}" args="tab_list=tab_list,active_page=active_page,default_tab=default_tab,tab_image=tab_image" />
                 <%block name="extratabs" />
 
                  % if is_LE_2019:
-                    <li style=" position: relative;top: 10px;">
+                    <div style="padding: 6px 0 0 15px;">
                         <a style="display:flex; font-size: .8rem; padding: 0; margin:0; border-bottom:none !important;"
                            href="https://courses.ibiology.org/courses/course-v1:iBiology+LE+2019/courseware/0739b306fa004fc1893d4c21f585183b/2fc7889152d8431faaf031fe08b82816/">
                             <img style="margin: 0px; padding: 0 0.5rem 0 0; height:30px; align-self: center;"
@@ -104,10 +104,11 @@ is_LE_2019 = str(course.id)=='course-v1:iBiology+LE+2019'
                                 <div><b>My Experimental Plan</b></div>
                             </div>
                         </a>
-                    </li>
+                    </div>
                 % endif
 
             </ol>
+
         </div>
     </nav>
 %endif

@@ -28,7 +28,8 @@ ibio_speaker_arr = [
         "speaker_slug": "uri-alon",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular Cell Biology",
-        "university": "Weizmann Institute of Science"
+        "university": "Weizmann Institute of Science",
+        "course": "PYSJ"
     },
     {
         "name": "Angela DePace",
@@ -36,7 +37,8 @@ ibio_speaker_arr = [
         "speaker_slug": "angela-depace",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
-        "university": "Harvard Medical School"
+        "university": "Harvard Medical School",
+        "course": "PYSJ"
     },
     {
         "name": "Tejal Desai",
@@ -44,7 +46,8 @@ ibio_speaker_arr = [
         "speaker_slug": "tejal-desai",
         "suffix": "Ph.D.",
         "title": "Professor, Bioengineering and Therapeutic Sciences",
-        "university": "University of California, San Francisco"
+        "university": "University of California, San Francisco",
+        "course": "PYSJ"
     },
     {
         "name": "Cynthia Fuhrmann",
@@ -52,7 +55,8 @@ ibio_speaker_arr = [
         "speaker_slug": "cynthia-fuhrmann",
         "suffix": "Ph.D.",
         "title": "Assistant Dean for Career and Professional Development; Director, Center for Biomedical Career Development",
-        "university": "University of Massachusetts Medical School"
+        "university": "University of Massachusetts Medical School",
+        "course": "PYSJ"
     },
     {
         "name": "Ryan Hernandez",
@@ -60,7 +64,8 @@ ibio_speaker_arr = [
         "speaker_slug": "ryan-hernandez",
         "suffix": "Ph.D.",
         "title": "Associate Professor, Systems Biology",
-        "university": "University of California, San Francisco"
+        "university": "University of California, San Francisco",
+        "course": "PYSJ"
     },
 
     {
@@ -69,7 +74,8 @@ ibio_speaker_arr = [
         "speaker_slug": "asia-matthew-onabanjo",
         "suffix": "M.D./Ph.D. Candidate",
         "title": "Leslie Shaw Lab",
-        "university": "University of Massachusetts Medical School"
+        "university": "University of Massachusetts Medical School",
+        "course": "PYSJ"
     },
     {
         "name": "Kassandra Ori-McKenney",
@@ -77,7 +83,8 @@ ibio_speaker_arr = [
         "speaker_slug": "kassie-ori-mckenney",
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular & Cellular Biology",
-        "university": "University of California, Davis"
+        "university": "University of California, Davis",
+        "course": "PYSJ"
     },
     {
         "name": "Sabine Petry",
@@ -86,6 +93,7 @@ ibio_speaker_arr = [
         "suffix": "Ph.D.",
         "title": "Assistant Professor, Molecular Biology ",
         "university": "Princeton University",
+        "course": "PYSJ"
     },
     {
         "name": "Indira Raman",
@@ -93,7 +101,8 @@ ibio_speaker_arr = [
         "speaker_slug": "indira-raman",
         "suffix": "Ph.D.",
         "title": "Professor, Neurobiology",
-        "university": "Northwestern University"
+        "university": "Northwestern University",
+        "course": "PYSJ"
     },
     {
         "name": "Randy Schekman",
@@ -101,7 +110,8 @@ ibio_speaker_arr = [
         "speaker_slug": "randy-schekman",
         "suffix": "Ph.D.",
         "title": "Professor, Molecular & Cellular Biology; HHMI Investigator",
-        "university": "University of California, Berkeley"
+        "university": "University of California, Berkeley",
+        "course": "PYSJ"
     },
     {
         "name": "Clarissa Scholes",
@@ -109,7 +119,8 @@ ibio_speaker_arr = [
         "speaker_slug": "clarissa-scholes",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
-        "university": "Harvard Medical School"
+        "university": "Harvard Medical School",
+        "course": "PYSJ"
     },
     {
         "name": "Ben Vincent",
@@ -117,7 +128,8 @@ ibio_speaker_arr = [
         "speaker_slug": "ben-vincent",
         "suffix": "Ph.D. Candidate",
         "title": "Angela DePace Lab",
-        "university": "Harvard Medical School"
+        "university": "Harvard Medical School",
+        "course": "PYSJ"
     },
     {
         "name": "Keith Yamamoto",
@@ -125,8 +137,191 @@ ibio_speaker_arr = [
         "speaker_slug": "keith-yamamoto",
         "suffix": "Ph.D.",
         "title": "Professor, Cellular & Molecular Pharmacology; Vice Chancellor for Science Policy and Strategy",
-        "university": "University of California, San Francisco"
+        "university": "University of California, San Francisco",
+        "course": "PYSJ"
     },
+
+
+
+
+    {
+        "name": "Aimee Kao",
+        "videoURL": None,
+        "speaker_slug": "aimee-kao",
+        "suffix": "Ph.D.",
+        "title": "Associate Professor",
+        "university": "University of California, San Francisco",
+        "course": "BCLS"
+    },
+    {
+        "name": "Anatol Kreitzer",
+        "videoURL": None,
+        "speaker_slug": "anatol-kreitzer",
+        "suffix": "Ph.D.",
+        "title": "Senior Investigator (Gladstone) and Associate Professor of Physiology and Neurology (UCSF)",
+        "university": "Gladstone Institute of Neurological Disease / University of California, San Francisco",
+        "course": "BCLS"
+    },
+    {
+        "name": "Asha S. Collins",
+        "videoURL": None,
+        "speaker_slug": "asha-s-collins",
+        "suffix": "Ph.D.",
+        "title": "Vice President of U.S. Clinical Trial Sourcing",
+        "university": "McKesson Corporation",
+        "course": "BCLS"
+    },
+    {
+        "name": "Christine Siu",
+        "videoURL": None,
+        "speaker_slug": "christine-siu",
+        "suffix": "MBA",
+        "title": "Chief Financial Officer",
+        "university": "Eidos Therapeutics",
+        "course": "BCLS"
+    },
+    {
+        "name": "Daniel Dornbusch",
+        "videoURL": None,
+        "speaker_slug": "daniel-dornbusch",
+        "suffix": "MS, MBA",
+        "title": "Founder",
+        "university": "KidsDOC; Acteris",
+        "course": "BCLS"
+    },
+    {
+        "name": "Deborah Dauber",
+        "videoURL": None,
+        "speaker_slug": "deborah-dauber",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "BCLS"
+    },
+    {
+        "name": "Girish Aakalu",
+        "videoURL": None,
+        "speaker_slug": "girish-aakalu",
+        "suffix": "Ph.D.",
+        "title": "Vice President and Head of Global Scientific Affairs & Scientific Intelligence",
+        "university": "Ipsen",
+        "course": "BCLS"
+    },
+    {
+        "name": "JeShaune Jackson",
+        "videoURL": None,
+        "speaker_slug": "jeshaune-jackson",
+        "suffix": "MS, MBA",
+        "title": "Founder ",
+        "university": "Bio-Diversity",
+        "course": "BCLS"
+    },
+    {
+        "name": "Jessica Tashker",
+        "videoURL": None,
+        "speaker_slug": "jessica-tashker",
+        "suffix": "Ph.D.",
+        "title": "Associate Director, Market Analysis and Strategy group",
+        "university": "Genentech",
+        "course": "BCLS"
+    },
+    {
+        "name": "Sandra Waugh Ruggles",
+        "videoURL": None,
+        "speaker_slug": "sandra-waugh-ruggles",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "BCLS"
+    },
+
+
+    {
+        "name": "Prachee Avasthi",
+        "videoURL": None,
+        "speaker_slug": "prachee-avasthi",
+        "suffix": "Ph.D.",
+        "title": "Assistant Professor in Department of Anatomy and Cell Biology",
+        "university": "Kansas University Medical Center",
+        "course": "LE"
+    },
+    {
+        "name": "Needhi Bhalla",
+        "videoURL": None,
+        "speaker_slug": "needhi-bhalla",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "University of California, Santa Cruz",
+        "course": "LE"
+    },
+    {
+        "name": "Daniel Colón-Ramos",
+        "videoURL": None,
+        "speaker_slug": "daniel-colon-ramos",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Doug Koshland",
+        "videoURL": None,
+        "speaker_slug": "doug-koshland",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Katie Pollard",
+        "videoURL": None,
+        "speaker_slug": "katie-pollard",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Neil Robbins III",
+        "videoURL": None,
+        "speaker_slug": "neil-robbins-III",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Ana Ruiz Saenz",
+        "videoURL": None,
+        "speaker_slug": "ana-ruiz-saenz",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Paul Turner",
+        "videoURL": None,
+        "speaker_slug": "paul-turner",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+    {
+        "name": "Ron Vale",
+        "videoURL": None,
+        "speaker_slug": "ron-vale",
+        "suffix": "Ph.D.",
+        "title": "",
+        "university": "",
+        "course": "LE"
+    },
+
+
+
+
+
 
 ]
 

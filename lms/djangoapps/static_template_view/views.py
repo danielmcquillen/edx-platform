@@ -238,7 +238,7 @@ ibio_speaker_arr = [
 
     {
         "name": "Prachee Avasthi",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/V0hklsjf1Yc",
         "speaker_slug": "prachee-avasthi",
         "suffix": "Ph.D.",
         "title": "Assistant Professor in Department of Anatomy and Cell Biology",
@@ -247,7 +247,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Needhi Bhalla",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/uIv1H4Vxce8",
         "speaker_slug": "needhi-bhalla",
         "suffix": "Ph.D.",
         "title": "",
@@ -256,7 +256,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Daniel Colón-Ramos",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/5WVUOsnr8jA",
         "speaker_slug": "daniel-colon-ramos",
         "suffix": "Ph.D.",
         "title": "",
@@ -265,7 +265,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Doug Koshland",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/zSqGvoHjVUA",
         "speaker_slug": "doug-koshland",
         "suffix": "Ph.D.",
         "title": "",
@@ -274,7 +274,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Katie Pollard",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/1CHoHKX1vy8",
         "speaker_slug": "katie-pollard",
         "suffix": "Ph.D.",
         "title": "",
@@ -283,7 +283,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Neil Robbins III",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/Zno5C0SRtAg",
         "speaker_slug": "neil-robbins-III",
         "suffix": "Ph.D.",
         "title": "",
@@ -292,7 +292,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ana Ruiz Saenz",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/w5vDdQTX45g",
         "speaker_slug": "ana-ruiz-saenz",
         "suffix": "Ph.D.",
         "title": "",
@@ -301,7 +301,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Paul Turner",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/TxQXo3XNg2w",
         "speaker_slug": "paul-turner",
         "suffix": "Ph.D.",
         "title": "",
@@ -310,7 +310,7 @@ ibio_speaker_arr = [
     },
     {
         "name": "Ron Vale",
-        "videoURL": None,
+        "videoURL": "https://www.youtube.com/embed/ASkKRvK20to",
         "speaker_slug": "ron-vale",
         "suffix": "Ph.D.",
         "title": "",

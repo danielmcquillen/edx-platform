@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
             field=models.CharField(blank=True, max_length=6, null=True, db_index=True, choices=[
                 (b'm', b'Male'),
                 (b'f', b'Female'),
-                (b't', b'Transgender'),
+                (b'n', b'Non-binary'),
                 (b'p', b'Prefer not to say'),
                 (b'o', b'I do not identify with any of the listed options.')]),
         ),

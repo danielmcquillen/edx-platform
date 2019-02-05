@@ -258,7 +258,7 @@ class UserProfile(models.Model):
     GENDER_CHOICES = (
         ('m', ugettext_noop('Male')),
         ('f', ugettext_noop('Female')),
-        ('t', ugettext_noop('Transgender')),
+        ('n', ugettext_noop('Non-binary')),
         ('p', ugettext_noop('Prefer not to say')),
         ('o', ugettext_noop('I do not identify with any of the listed options.'))
     )

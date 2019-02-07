@@ -20,7 +20,7 @@
 	
 	<section class="video-header-row">
 		<div class="row" >
-				%if ibio_speaker.get('videoURL')
+				%if ibio_speaker.get('videoURL'):
 					<div class="col col-12" style="width:100%;">
 						<div class="video-container" style="overflow: hidden;position: relative;padding-bottom: 45%;">
 							<iframe src="${ibio_speaker['videoURL']}?rel=0"
@@ -30,7 +30,7 @@
 							</iframe>
 						</div>
 					</div> <!-- ./col -->
-				%else
+				%else:
 					<div class="col col-12" style="width:100%; background-color:#fff;max-height:388px;">
 						<img src="/static/ibio-openedx-theme/images/speakers/${speaker_slug}.jpg" style="height:100%;"/>
 					</div> <!-- ./col -->

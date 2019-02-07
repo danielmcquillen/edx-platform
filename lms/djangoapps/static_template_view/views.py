@@ -255,7 +255,7 @@ ibio_speaker_arr = [
         "course": "LE"
     },
     {
-        "name": "Daniel Colon-Ramos",
+        "name": u"Daniel Colón-Ramos",
         "videoURL": "https://www.youtube.com/embed/5WVUOsnr8jA",
         "speaker_slug": "daniel-colon-ramos",
         "suffix": "Ph.D.",

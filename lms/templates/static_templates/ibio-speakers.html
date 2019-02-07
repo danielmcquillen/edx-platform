@@ -49,7 +49,7 @@
             <h2 class="course-speakers-title">Let's Experiment</h2>
             <div class="ibio-speakers-grid">
             %for speaker in ibio_speaker_arr:
-                %if speaker['course'] == 'LE':
+                %if speaker.get('course') == 'LE':
                     ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
             %endfor
@@ -58,7 +58,7 @@
             <h2 class="course-speakers-title">Planning Your Scientific Journey</h2>
             <div class="ibio-speakers-grid">
             %for speaker in ibio_speaker_arr:
-                %if speaker['course'] == 'PYSJ':
+                %if speaker.get('course') == 'PYSJ':
                     ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
             % endfor
@@ -68,7 +68,7 @@
 
             <div class="ibio-speakers-grid">
             %for speaker in ibio_speaker_arr:
-                %if speaker['course'] == 'BCLS':
+                %if speaker.get('course') == 'BCLS':
                     ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
             %endfor

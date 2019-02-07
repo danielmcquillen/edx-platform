@@ -5,6 +5,18 @@
 <%block name="pagetitle">${_("iBiology Courses Speakers")}</%block>
 
 <%def name="ibio_speaker_card(name, suffix, university, title, speaker_slug, short_description)">
+
+<style>
+    .course-speakers-title {
+        margin-top: 2em;
+        margin-bottom: 2em;
+        display: flex;
+        flex-direction: row;
+        font-weight: bold;
+        justify-content: center;
+    }
+</style>
+
 <div class="speaker-card">
     <a href="/speakers/${speaker_slug}">
         <img class="card-thumbnail"
@@ -44,35 +56,38 @@
 
     <section class="container ibio-speakers">
         <h1>${_("iBiology Courses Speakers")}</h1>
-        <div >
+        <div>
 
 
             <h2 class="course-speakers-title">Let's Experiment</h2>
             <div class="ibio-speakers-grid">
-            %for speaker in ibio_speaker_arr:
+                %for speaker in ibio_speaker_arr:
                 %if speaker.get('course') == 'LE':
-                    ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
+                ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'],
+                title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
-            %endfor
+                %endfor
             </div>
 
             <h2 class="course-speakers-title">Planning Your Scientific Journey</h2>
             <div class="ibio-speakers-grid">
-            %for speaker in ibio_speaker_arr:
+                %for speaker in ibio_speaker_arr:
                 %if speaker.get('course') == 'PYSJ':
-                    ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
+                ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'],
+                title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
-            % endfor
+                % endfor
             </div>
 
             <h2 class="course-speakers-title">Business Concepts for Life Scientists</h2>
 
             <div class="ibio-speakers-grid">
-            %for speaker in ibio_speaker_arr:
+                %for speaker in ibio_speaker_arr:
                 %if speaker.get('course') == 'BCLS':
-                    ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'], title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
+                ${ibio_speaker_card(name=speaker['name'], suffix=speaker['suffix'], university=speaker['university'],
+                title=speaker['title'], speaker_slug=speaker['speaker_slug'], short_description="")}
                 %endif
-            %endfor
+                %endfor
             </div>
 
         </div>

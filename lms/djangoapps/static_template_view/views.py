@@ -260,7 +260,7 @@ ibio_speaker_arr = [
         "speaker_slug": "daniel-colon-ramos",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "Yale School of Medicine",
         "course": "LE"
     },
     {
@@ -269,7 +269,7 @@ ibio_speaker_arr = [
         "speaker_slug": "doug-koshland",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "University of California, Berkeley",
         "course": "LE"
     },
     {
@@ -278,7 +278,7 @@ ibio_speaker_arr = [
         "speaker_slug": "katie-pollard",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "Gladstone Institute",
         "course": "LE"
     },
     {
@@ -287,7 +287,7 @@ ibio_speaker_arr = [
         "speaker_slug": "neil-robbins-III",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "Stanford University",
         "course": "LE"
     },
     {
@@ -296,7 +296,7 @@ ibio_speaker_arr = [
         "speaker_slug": "ana-ruiz-saenz",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "University of California, San Francisco",
         "course": "LE"
     },
     {
@@ -305,7 +305,7 @@ ibio_speaker_arr = [
         "speaker_slug": "paul-turner",
         "suffix": "Ph.D.",
         "title": "",
-        "university": "",
+        "university": "Yale University",
         "course": "LE"
     },
     {
@@ -313,8 +313,8 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/ASkKRvK20to",
         "speaker_slug": "ron-vale",
         "suffix": "Ph.D.",
-        "title": "",
-        "university": "",
+        "title": "Professor of the Department of Cellular and Molecular Pharmacology; HHMI Investigator",
+        "university": "University of California, San Francisco",
         "course": "LE"
     },
 

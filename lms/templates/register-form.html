@@ -237,6 +237,14 @@ from student.models import UserProfile
   <ol class="list-input">
     <li class="field-group">
 
+      <!-- iBio -->
+       <div class="field required checkbox" id="field-user_agreement_ibio_study">
+        <input id="user_agreement_ibio_study-yes" type="checkbox" name="user_agreement_ibio_study" value="true" required aria-required="true" />
+        <label for="tos-yes">
+          I agree to participate in the iBiology Courses study. <a href="https://courses.ibiology.org/about#study" target="_blank">What's this?</a>
+        </label>
+      </div>
+
       % if has_extauth_info is UNDEFINED or ask_for_tos :
       <div class="field required checkbox" id="field-tos">
         <input id="tos-yes" type="checkbox" name="terms_of_service" value="true" required aria-required="true" />

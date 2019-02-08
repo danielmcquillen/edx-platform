@@ -44,7 +44,8 @@ import calendar
       toggleSubmitButton(true);
 
       $('#register-form').on('submit', function() {
-        toggleSubmitButton(false);
+        // iBIO: button isn't resetting after error so commenting this out for now...
+        // toggleSubmitButton(false);
       });
 
       $('#register-form').on('ajax:error', function() {
@@ -99,7 +100,7 @@ import calendar
 </%block>
 
 <section class="introduction">
-  <header>
+  <header style="background:none">
     <h1 class="title">
       <span class="title-super">${_("Welcome!")}</span>
       <span class="title-sub">${_("Register below to create your {platform_name} account").format(platform_name=platform_name)}</span>

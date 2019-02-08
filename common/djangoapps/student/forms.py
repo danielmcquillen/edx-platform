@@ -110,6 +110,12 @@ class AccountCreationForm(forms.Form):
     A form to for account creation data. It is currently only used for
     validation, not rendering.
     """
+
+    # iBio : adding manually to check for 'agreed to study'
+    user_agreement_ibio_study = TrueField(
+        error_messages={'required': 'You must accept agree to participate in the iBiology Courses study'}
+    )
+
     # TODO: Resolve repetition
     username = forms.SlugField(
         min_length=2,

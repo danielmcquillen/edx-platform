@@ -14,9 +14,9 @@ from django.core.urlresolvers import reverse
 % if has_extauth_info is UNDEFINED:
 
 <div class="btn-brand btn-login">
-  <h3 class="title">${_("Already registered?")}</h3>
+  <h3 class="title" style="color:#fff">${_("Already registered?")}</h3>
   <p class="instructions">
-    <a class="btn-login-action" href="${reverse('signin_user')}${login_query()}">
+    <a class="btn-login-action" style="color:#fff" href="${reverse('signin_user')}${login_query()}">
       ${_("Log in")}
     </a>
   </p>
@@ -26,7 +26,7 @@ from django.core.urlresolvers import reverse
 
 ## TODO: Use a %block tag or something to allow themes to
 ##       override in a more generalizable fashion.
-<div class="cta cta-welcome">
+<div class="cta cta-welcome" style="margin-top:1em">
   <h3>${_("Welcome to {platform_name}").format(platform_name=platform_name)}</h3>
   <p>${_("Registering with {platform_name} gives you access to all of our current and future free courses. Not ready to take a course just yet? Registering puts you on our mailing list - we will update you as courses are added.").format(platform_name=platform_name)}</p>
 </div>

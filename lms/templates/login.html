@@ -45,7 +45,8 @@ from third_party_auth import provider, pipeline
       toggleSubmitButton(true);
 
       $('#login-form').on('submit', function() {
-        toggleSubmitButton(false);
+        //iBio : turn this off as button not resetting correctly
+        //toggleSubmitButton(false);
       });
 
       $('#login-form').on('ajax:error', function(event, request, status_string) {
@@ -132,7 +133,7 @@ from third_party_auth import provider, pipeline
 <%include file="forgot_password_modal.html" />
 
 <section class="introduction">
-  <header>
+  <header style="background:none;">
     <h1 class="title">
       <span class="title-super">${_("Please log in")}</span>
       <span class="title-sub">${_("to access your account and courses")}</span>

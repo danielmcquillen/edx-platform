@@ -461,7 +461,10 @@ function(HTML5Video, Resizer) {
             );
         }
 
-        newSpeed = parseFloat(newSpeed).toFixed(2).replace(/\.00$/, '.0');
+        // iBio manual fix, following pull request:
+        // https://github.com/edx/edx-platform/pull/19708/commits/2ee631f66601f7db90eb48e13aa3931435bf9355
+        // newSpeed = parseFloat(newSpeed).toFixed(2).replace(/\.00$/, '.0');
+        newSpeed = parseFloat(newSpeed);
         this.setSpeed(newSpeed);
         this.videoPlayer.setPlaybackRate(newSpeed);
     }

@@ -250,7 +250,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/uIv1H4Vxce8",
         "speaker_slug": "needhi-bhalla",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Associate Professor in the Department of Molecular, Cell and Developmental Biology",
         "university": "University of California, Santa Cruz",
         "course": "LE"
     },
@@ -259,7 +259,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/5WVUOsnr8jA",
         "speaker_slug": "daniel-colon-ramos",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Associate Professor of Neuroscience and Cell Biology; Associate Professor of Neuroscience",
         "university": "Yale School of Medicine",
         "course": "LE"
     },
@@ -268,7 +268,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/zSqGvoHjVUA",
         "speaker_slug": "doug-koshland",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Richard and Rhoda Goldman Distinguished Chair in the Biological Sciences & Professor of Genetics, Genomics and Development",
         "university": "University of California, Berkeley",
         "course": "LE"
     },
@@ -277,7 +277,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/1CHoHKX1vy8",
         "speaker_slug": "katie-pollard",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Senior Investigator and Director of the Gladstone Institute of Data Science and Biotechnology at the Gladstone Institutes; Professor in the Department of Epidemiology & Biostatistics, Institute for Human Genetics, Quantitative Biology Institute, and Institute for Computational Health Sciences at the University of California, San Francisco.",
         "university": "Gladstone Institute",
         "course": "LE"
     },
@@ -286,7 +286,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/Zno5C0SRtAg",
         "speaker_slug": "neil-robbins-III",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Former graduate student in José Dinneny's lab",
         "university": "Stanford University",
         "course": "LE"
     },
@@ -295,7 +295,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/w5vDdQTX45g",
         "speaker_slug": "ana-ruiz-saenz",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Postdoctoral fellow in Mark Moasser's lab",
         "university": "University of California, San Francisco",
         "course": "LE"
     },
@@ -304,7 +304,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/TxQXo3XNg2w",
         "speaker_slug": "paul-turner",
         "suffix": "Ph.D.",
-        "title": "",
+        "title": "Elihu Professor of Ecology and Evolutionary Biology at Yale University; Professor of Microbiology at Yale School of Medicine",
         "university": "Yale University",
         "course": "LE"
     },
@@ -313,7 +313,7 @@ ibio_speaker_arr = [
         "videoURL": "https://www.youtube.com/embed/ASkKRvK20to",
         "speaker_slug": "ron-vale",
         "suffix": "Ph.D.",
-        "title": "Professor of the Department of Cellular and Molecular Pharmacology; HHMI Investigator",
+        "title": "Professor of the Department of Cellular and Molecular Pharmacology; Investigator in the Howard Hughes Medical Institute",
         "university": "University of California, San Francisco",
         "course": "LE"
     },
